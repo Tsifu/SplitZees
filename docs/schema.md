@@ -26,6 +26,7 @@ bill_id     | integer   | not null, foreign key
 user_id     | integer   | not null, foreign key
 amount      | float     | not null
 status      | string    | not null, default: "open"
+close_date  | date      | not null, default: "open"
 
 ## friends
 column name | data type | details
