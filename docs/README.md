@@ -24,13 +24,13 @@ sufficient CSS styling:
 - [ ] Production README [sample](/production_readme.md)
 
 ## Design Docs
-* [View Wireframes][wireframes]
+* [View Wireframes](wireframes/)
 * [React Components][components]
 * [API endpoints][api-endpoints]
 * [DB schema][schema]
 * [Sample State][sample-state]
 
-[wireframes]: docs/wireframes
+
 [components]: /components-hierarchy.md
 [sample-state]: /sample-state.md
 [api-endpoints]: /api-endpoints.md
