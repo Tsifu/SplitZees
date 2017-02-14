@@ -1,4 +1,4 @@
-# SplitZees  - Test
+# SplitZees
 
 [Heroku link][heroku] **Note:** This should be a link to your production site
 
@@ -32,7 +32,7 @@ sufficient CSS styling:
 
 [wireframes]: ../docs/wireframes
 [components]: ../docs/components-hierarchy.md
-[sample-state]: ../sample-state.md
+[sample-state]: ./sample-state.md
 [api-endpoints]: ../docs/api-endpoints.md
 [schema]: ../docs/schema.md
 
