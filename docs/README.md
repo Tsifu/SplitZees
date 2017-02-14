@@ -4,7 +4,7 @@
 
 [SplitWise link][splitwise]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://splitzees.herokuapp.com/#/
 [splitwise]: https://secure.splitwise.com/
 
 ## Minimum Viable Product
