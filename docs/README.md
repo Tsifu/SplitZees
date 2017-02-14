@@ -31,10 +31,10 @@ sufficient CSS styling:
 * [Sample State][sample-state]
 
 [wireframes]: ../docs/wireframes
-[components]: ..docs/components-hierarchy.md
-[sample-state]: /sample-state.md
-[api-endpoints]: /api-endpoints.md
-[schema]: /schema.md
+[components]: ../docs/components-hierarchy.md
+[sample-state]: ../sample-state.md
+[api-endpoints]: ../docs/api-endpoints.md
+[schema]: ../docs/schema.md
 
 ## Implementation Timeline
 
