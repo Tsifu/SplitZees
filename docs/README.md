@@ -21,7 +21,7 @@ sufficient CSS styling:
 - [ ] Show outstanding balances by friends and total amount you owe or they owe you
 - [ ] Settle bill
 - [ ] See individual bill detail show page
-- [ ] Production README [sample](docs/production_readme.md)
+- [ ] Production README [sample](/production_readme.md)
 
 ## Design Docs
 * [View Wireframes][wireframes]
@@ -30,11 +30,11 @@ sufficient CSS styling:
 * [DB schema][schema]
 * [Sample State][sample-state]
 
-[wireframes]: docs/wireframes
-[components]: docs/components-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+[wireframes]: /wireframes
+[components]: /components-hierarchy.md
+[sample-state]: /sample-state.md
+[api-endpoints]: /api-endpoints.md
+[schema]: /schema.md
 
 ## Implementation Timeline
 
