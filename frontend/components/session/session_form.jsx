@@ -5,14 +5,13 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.signout = this.signout.bind(this);
     this.state = { username: "", password: "" };
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).then(() => {
-      this.props.router.push("/");
+      this.props.router.push("/home");
     });
   }
 
@@ -22,22 +21,7 @@ class SessionForm extends React.Component {
     };
   }
 
-  signout() {
-    this.props.logout().then(() => {
-      this.props.router.push("/");
-    });
-  }
-
   render () {
-    if (this.props.currentUser) {
-      return (
-        <div>
-          <h3>Welcome dasfsd fasfd{this.props.currentUser.username}</h3>
-          <button onClick={this.signout}>Sign Out</button>
-        </div>
-      );
-    }
-
     return (
       <div>
 
@@ -68,11 +52,5 @@ class SessionForm extends React.Component {
     );
   }
 }
-
-const editLink = id => e => {
-    e.preventDefault();
-    const url = `/`;
-    hashHistory.push(url);
-};
 
 export default withRouter(SessionForm);

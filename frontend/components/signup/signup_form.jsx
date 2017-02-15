@@ -11,7 +11,7 @@ class SignUpForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.signup(this.state).then(() => {
-      this.props.router.push("/");
+      this.props.router.push("/home");
     });
   }
 
@@ -24,7 +24,7 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <div>
-        <h3>Sign Up</h3>
+        <h3>INTRODUCE YOURSELF</h3>
           <ul>
             {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
@@ -34,6 +34,14 @@ class SignUpForm extends React.Component {
               type="text"
               onChange={this.update("username")}
               value={this.state.username}
+              />
+          </label>
+
+          <label>Email Address
+            <input
+              type="text"
+              onChange={this.update("email")}
+              value={this.state.email}
               />
           </label>
 
