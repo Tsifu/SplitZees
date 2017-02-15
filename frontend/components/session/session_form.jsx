@@ -5,7 +5,7 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { email: "Email address", password: "Password" };
+    this.state = { email: "", password: "" };
   }
 
   handleSubmit(e) {
@@ -21,15 +21,9 @@ class SessionForm extends React.Component {
     };
   }
 
-  clearText(target) {
-    return (e) => {
-      e.target.value ="";
-    };
-  }
-
   render () {
     return (
-      <div>
+      <div className="session-form">
 
         <h3>Sign In</h3>
         <ul>
@@ -41,7 +35,7 @@ class SessionForm extends React.Component {
               type='text'
               value={this.state.email}
               onChange={this.update('email')}
-              onFocus={this.clearText(this)}
+              placeholder="Email Address"
               />
           </label>
 
@@ -49,8 +43,7 @@ class SessionForm extends React.Component {
             <input
               type='text'
               value={this.state.password}
-              onChange={this.update('password')}
-              onFocus={this.clearText(this)}
+              placeholder="Password"
               />
           </label>
 

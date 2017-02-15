@@ -4,6 +4,11 @@
     window.currentUser =
       <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
   <% end %>
+
+  window.images = {
+    splitzeesLogo: "<%= image_path("logo.png") %>"
+  }
 </script>
+
 
 <main id="root"></main>

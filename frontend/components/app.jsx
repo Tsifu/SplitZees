@@ -9,10 +9,20 @@ const editLink = (path) => (e) => {
 const App = ({ children }) => (
   <div>
     <div className="header">
-      <h1>SplitZees</h1>
-      <button onClick={editLink("/signin")}>Log in</button>
-      <button onClick={editLink("/signup")}>Sign Up</button>
+
+      <div className="logo">
+        <img src={window.images.splitzeesLogo}/>
+      </div>
+
+      <div className="login-button">
+        <button className="btn-signin" onClick={editLink("/signin")}>Log in</button>
+
+                  or
+                  
+        <button className="btn-signup" onClick={editLink("/signup")}>Sign Up</button>
+      </div>
     </div>
+
     {children}
   </div>
 );
