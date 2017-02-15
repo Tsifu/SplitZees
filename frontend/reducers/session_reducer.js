@@ -4,7 +4,7 @@ import merge from 'lodash/merge';
 const _defaultState = {
   currentUser: null,
   errors: {}
-}
+};
 
 const SessionReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
@@ -17,6 +17,6 @@ const SessionReducer = (oldState = _defaultState, action) => {
     default:
       return oldState;
   }
-}
+};
 
 export default SessionReducer;

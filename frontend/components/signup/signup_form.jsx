@@ -29,7 +29,7 @@ class SignUpForm extends React.Component {
             {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
         <form onSubmit={this.handleSubmit}>
-          <label>Username
+          <label>Hi there! My name is
             <input
               type="text"
               onChange={this.update("username")}
@@ -37,15 +37,15 @@ class SignUpForm extends React.Component {
               />
           </label>
 
-          <label>Email Address
+          <label>Here's my <strong>email address:</strong>
             <input
-              type="text"
+              type="email"
               onChange={this.update("email")}
               value={this.state.email}
               />
           </label>
 
-          <label>Password
+          <label>And here is my <strong>password:</strong>
             <input
               type="text"
               onChange={this.update("password")}

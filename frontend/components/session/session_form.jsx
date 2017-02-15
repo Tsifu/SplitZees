@@ -5,7 +5,7 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = { username: "", password: "" };
+    this.state = { email: "Email address", password: "Password" };
   }
 
   handleSubmit(e) {
@@ -21,6 +21,12 @@ class SessionForm extends React.Component {
     };
   }
 
+  clearText(target) {
+    return (e) => {
+      e.target.value ="";
+    };
+  }
+
   render () {
     return (
       <div>
@@ -30,23 +36,25 @@ class SessionForm extends React.Component {
           {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <form onSubmit={this.handleSubmit}>
-          <label>Name
+          <label>
             <input
               type='text'
-              value={this.state.username}
-              onChange={this.update('username')}
+              value={this.state.email}
+              onChange={this.update('email')}
+              onFocus={this.clearText(this)}
               />
           </label>
 
-          <label>Password
+          <label>
             <input
               type='text'
               value={this.state.password}
               onChange={this.update('password')}
+              onFocus={this.clearText(this)}
               />
           </label>
 
-          <input type="submit" value="Sign In"/>
+          <input type="submit" value="Log in to SplitZees"/>
         </form>
       </div>
     );
