@@ -8,9 +8,11 @@ const editLink = (path) => (e) => {
 
 const App = ({ children }) => (
   <div>
-    <h1>SplitZees</h1>
-    <button onClick={editLink("/signin")}>Log in</button>
-    <button onClick={editLink("/signup")}>Sign Up</button>
+    <div className="header">
+      <h1>SplitZees</h1>
+      <button onClick={editLink("/signin")}>Log in</button>
+      <button onClick={editLink("/signup")}>Sign Up</button>
+    </div>
     {children}
   </div>
 );
