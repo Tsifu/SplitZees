@@ -16,6 +16,7 @@ id          | integer   | not null, primary key
 description | string    | not null
 amount      | float     | not null
 payer_id    | integer   | not null, foreign key
+date        | date      | not null
 archived    | boolean   | not null, default: false
 
 ## owers

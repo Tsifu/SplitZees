@@ -1,6 +1,7 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 import SessionFormContainer from '../session/session_form_container';
+import { withRouter } from 'react-router';
 
 const editLink = (path) => (e) => {
   e.preventDefault();
@@ -56,4 +57,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

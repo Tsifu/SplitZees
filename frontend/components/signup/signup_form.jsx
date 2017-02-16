@@ -33,7 +33,7 @@ class SignUpForm extends React.Component {
         <div className="signup-form">
           <div>
             <h2>INTRODUCE YOURSELF</h2>
-            <ul>
+            <ul className="error-messages">
               {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
           </div>
@@ -51,26 +51,27 @@ class SignUpForm extends React.Component {
                   />
               </label>
               <br/>
-              <label className="lbl-email">Here's my <strong>email address:</strong>
+              <label className="lbl-signup">Here's my <strong>email address:</strong>
               <br/>
                 <input
+                  className="inpt-signup"
                   type="email"
                   onChange={this.update("email")}
                   value={this.state.email}
                   />
               </label>
               <br/>
-              <label className="lbl-password">And here is my <strong>password:</strong>
+              <label className="lbl-signup">And here is my <strong>password:</strong>
               <br/>
                 <input
-
+                  className="inpt-signup"
                   type="text"
                   onChange={this.update("password")}
                   value={this.state.password}
                   />
                 <br/>
               </label>
-              <input type="submit" value="Sign Up"/>
+              <input className="signin-submit" type="submit" value="Sign me up!"/>
             </form>
           </div>
           </div>
