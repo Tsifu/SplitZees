@@ -34,6 +34,7 @@ class SignUpForm extends React.Component {
               type="text"
               onChange={this.update("username")}
               value={this.state.username}
+
               />
           </label>
 
