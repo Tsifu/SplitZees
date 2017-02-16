@@ -9,11 +9,7 @@
 User.destroy_all
 
 User.create(username: "breakfast", password: "breakfast", email: "breakfast@gmail.com")
-<<<<<<< HEAD
 guest = User.create(username: "guest", password: "guest123", email: "guest@gmail.com")
-=======
-User.create(username: "guest", password: "guest123", email: "guest@gmail.com")
->>>>>>> 7c05678be9f2793ce514ce5a8e8ce036aadfed58
 
 friends = []
 
@@ -22,9 +18,5 @@ friends = []
 end
 
 5.times do |idx|
-<<<<<<< HEAD
   Friendship.create(user_id: guest.id, friend_id: friends[idx].id)
-=======
-  Friendship.create(user_id: 2, friend_id: friends[idx].id)
->>>>>>> 7c05678be9f2793ce514ce5a8e8ce036aadfed58
 end
