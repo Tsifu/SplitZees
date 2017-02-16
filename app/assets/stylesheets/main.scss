@@ -5,8 +5,7 @@ html {
 
 body {
 	margin: 0 auto;
-  font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
-  text-rendering: optimizeLegibility;
+  font-family: 'Lato', sans-serif;
   font-size: 13px;
 }
 
@@ -20,8 +19,26 @@ button {
   border: 1px solid #ccc;
   cursor: pointer;
   border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	font-family: 'Lato', sans-serif;
 }
 
-button:focus {
+.main {
+  display: flex;
+  align-items: center;
+	justify-content: center;
+	flex-flow: column;
+}
 
+h1 {
+	font-size: 40px;
+	font-family: 'Lato', sans-serif;
+	font-weight: bold;
+}
+
+.logo {
+	display: flex;
+}
+
+.slogan {
+	font-size: 21px;
 }

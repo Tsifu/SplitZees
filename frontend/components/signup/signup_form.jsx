@@ -23,39 +23,59 @@ class SignUpForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>INTRODUCE YOURSELF</h3>
-          <ul>
-            {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-        <form onSubmit={this.handleSubmit}>
-          <label>Hi there! My name is
-            <input
-              type="text"
-              onChange={this.update("username")}
-              value={this.state.username}
 
-              />
-          </label>
+      <div className="signup-page">
+        <div className="signup-container">
+        <div className="signup-logo">
+          <img src={window.images.smallLogo}/>
+        </div>
 
-          <label>Here's my <strong>email address:</strong>
-            <input
-              type="email"
-              onChange={this.update("email")}
-              value={this.state.email}
-              />
-          </label>
+        <div className="signup-form">
+          <div>
+            <h2>INTRODUCE YOURSELF</h2>
+            <ul>
+              {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+          </div>
 
-          <label>And here is my <strong>password:</strong>
-            <input
-              type="text"
-              onChange={this.update("password")}
-              value={this.state.password}
-              />
-          </label>
-          <input type="submit" value="Sign Up"/>
-        </form>
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <label className="lbl-name">Hi there! My name is
+                <br/>
+                <input
+                  className="inpt-name"
+                  type="text"
+                  onChange={this.update("username")}
+                  value={this.state.username}
+
+                  />
+              </label>
+              <br/>
+              <label className="lbl-email">Here's my <strong>email address:</strong>
+              <br/>
+                <input
+                  type="email"
+                  onChange={this.update("email")}
+                  value={this.state.email}
+                  />
+              </label>
+              <br/>
+              <label className="lbl-password">And here is my <strong>password:</strong>
+              <br/>
+                <input
+
+                  type="text"
+                  onChange={this.update("password")}
+                  value={this.state.password}
+                  />
+                <br/>
+              </label>
+              <input type="submit" value="Sign Up"/>
+            </form>
+          </div>
+          </div>
       </div>
+    </div>
     );
   }
 }

@@ -1,30 +1,24 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
-
-const editLink = (path) => (e) => {
-  e.preventDefault();
-  hashHistory.push(path);
-}
+import HeaderContainer from './header/header_container';
 
 const App = ({children}) => {
-  const guest = { email: "guest@gmail.com", password: "guest123" };
 
   return (
     <div>
-      <div className="header">
+      <HeaderContainer />
 
+
+      <div className="main">
         <div className="logo">
-          <img src={window.images.splitzeesLogo}/>
+          <img src={window.images.smallLogo}/>
+          <h1>Split expenses with friends.</h1>
         </div>
 
-        <div className="login-button">
-          <button className="btn-signin" onClick={editLink("/signin")}>Log in</button>
-          or
-          <button className="btn-signup" onClick={editLink("/signup")}>Sign Up</button>
+        <div className="slogan">
+          <strong>Share bills</strong> and IOUs. Its alright to leave your wallet at home!
         </div>
       </div>
-
-      {children}
     </div>
   );
 };

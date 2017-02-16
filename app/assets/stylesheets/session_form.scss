@@ -1,3 +1,28 @@
 .session-form {
   background: #eee
 }
+
+.signin-input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  height: 18px;
+  padding: 4px;
+  margin-bottom: 8px;
+}
+
+.signin-input, textarea {
+  width: 210px;
+}
+
+.signinsub {
+  width: 210px;
+  font-family: 'Lato', sans-serif;
+  background: #5BC5A7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 4px;
+  color: #fff;
+}
