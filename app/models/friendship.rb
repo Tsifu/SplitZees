@@ -12,7 +12,7 @@
 class Friendship < ApplicationRecord
   validates :user_id, :friend_id, presence: true
 
-  validates :user_id uniqueness: { scope: :friend_id , message: "Once your friend, always your friend - No duplicates" }
+  validates :user_id, uniqueness: { scope: :friend_id , message: "Once your friend, always your friend - No duplicates" }
 
 
   belongs_to :user,
