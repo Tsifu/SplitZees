@@ -2,7 +2,9 @@ import {
   RECEIVE_FRIEND,
   RECEIVE_FRIENDSHIPS,
   RECEIVE_FRIEND_ERRORS,
-  RECEIVE_FRIENDSHIPS_ERRORS } from '../actions/friendship_actions';
+  RECEIVE_FRIENDSHIPS_ERRORS } from '../actions/friendships_actions';
+
+  import merge from 'lodash/merge';
 
 const _defaultState = {
   friends: null,
@@ -11,7 +13,7 @@ const _defaultState = {
   friendErrors: {}
 };
 
-const FriendshipsReducer = (oldState = _defaultState, action) = {
+const FriendshipsReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case RECEIVE_FRIENDSHIPS:
@@ -20,7 +22,7 @@ const FriendshipsReducer = (oldState = _defaultState, action) = {
         oldState,
         { friends: action.friends },
         { prospectiveFriends: action.prospectiveFriends },
-        { friendshipErrors: {} }
+        { friendshipErrors: {} },
         { friendErrors: {} }
       );
 
@@ -43,19 +45,19 @@ const FriendshipsReducer = (oldState = _defaultState, action) = {
       return merge(
         {},
         oldState,
-        { friendshipErrors: actions.errors },
+        { friendshipErrors: actions.errors }
       );
 
     case RECEIVE_FRIEND_ERRORS:
       return merge(
         {},
         oldState,
-        { friendErrors: actions.errors },
+        { friendErrors: actions.errors }
       );
 
     default:
       return oldState;
   }
-}
+};
 
 export default FriendshipsReducer;

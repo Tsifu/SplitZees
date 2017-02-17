@@ -1,13 +1,14 @@
-import * as FriendshipUtil from '../util/friendship_api_util';
+import * as FriendshipUtil from '../util/friendships_api_util';
 
 export const RECEIVE_FRIENDSHIPS = "RECEIVE_FRIENDSHIPS";
 export const RECEIVE_FRIENDSHIPS_ERRORS = "RECEIVE_FRIENDSHIPS_ERRORS";
 export const RECEIVE_FRIEND = "RECEIVE_FRIEND";
 export const RECEIVE_FRIEND_ERRORS = "RECEIVE_FRIEND_ERROR";
 
-export const receiveFriendships = (friendships) => ({
+export const receiveFriendships = ({friends, prospectiveFriends}) => ({
   type: RECEIVE_FRIENDSHIPS,
-  friendships
+  friends,
+  prospectiveFriends
 });
 
 export const receiveFriendshipsErrors = (errors) => ({
