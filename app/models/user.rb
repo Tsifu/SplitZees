@@ -52,6 +52,12 @@ class User < ApplicationRecord
 		self.session_token
 	end
 
+	def prospective_friends
+		friends_id = User.find(self.id).friends.pluck(:id)
+		friends_id_and_self = friends_id.push(self.id)
+		User.where.not(id: friends_id_and_self)
+	end
+
 	private
 
 	def ensure_session_token
@@ -68,9 +74,4 @@ class User < ApplicationRecord
 		end
 	end
 
-	def prospective_friends
-		friends_id = User.find(self.id).friends.pluck(:id)
-		friends_id_and_self = friends_id.push(own_id)
-		User.where.not(id: friends_id_and_self)
-	end
 end

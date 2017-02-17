@@ -1,3 +1,4 @@
+
 json.friends @friends do |friend|
   json.user_id friend.id
   json.username friend.username

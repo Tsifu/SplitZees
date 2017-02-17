@@ -4,22 +4,11 @@ class Api::SessionsController < ApplicationController
       params[:user][:email],
       params[:user][:password]
     )
-
     if @user
       login(@user)
       render "api/users/show"
     else
       render json: ["Invalid Credentials"], status: 422
-    end
-  end
-
-  def show
-    @user = current_user
-
-    if @user
-      render "api/users/show"
-    else
-      render json: nil
     end
   end
 

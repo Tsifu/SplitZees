@@ -9,6 +9,7 @@ class Api::FriendshipsController < ApplicationController
      @user = User.find(params[:id])
      @friends = @user.friends
      @prospective_friends = @user.prospective_friends
+     render "api/friendship/show"
   end
 
   def friendship_params
