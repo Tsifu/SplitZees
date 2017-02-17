@@ -34,7 +34,7 @@ export const fetchFriendships = (id) => dispatch => {
 };
 
 export const createfriendship = (friendship) => dispatch => {
-  return FriendshipUtil.fetchFriendships(friendship)
-    .then((friend) => dispatch(friend),
+  return FriendshipUtil.createfriendship(friendship)
+    .then((friend) => dispatch(receiveFriend(friend)),
       err => dispatch(receiveFriendErrors(err.responseJSON)));
 };
