@@ -32,10 +32,10 @@ class SignUpForm extends React.Component {
 
         <div className="signup-form">
           <div>
-            <h2>INTRODUCE YOURSELF</h2>
             <ul className="error-messages">
               {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
+            <h2>INTRODUCE YOURSELF</h2>
           </div>
 
           <div>

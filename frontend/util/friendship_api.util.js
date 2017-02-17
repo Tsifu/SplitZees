@@ -1,7 +1,7 @@
 export const createfriendship = (friendship) => (
   $.ajax({
     method: "POST",
-    url: `api/friendship`,
+    url: `api/friendships`,
     data: {friendship},
   })
 );
@@ -9,6 +9,6 @@ export const createfriendship = (friendship) => (
 export const fetchFriendships = (id) => (
   $.ajax({
     method: "GET",
-    url: `api/friendship/${id}`
+    url: `api/friendships/${id}`
   })
 );
