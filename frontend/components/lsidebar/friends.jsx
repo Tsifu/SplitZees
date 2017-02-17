@@ -33,7 +33,7 @@ class Friends extends React.Component {
 
   componentDidMount() {
     if (this.props.currentUser) {
-      this.props.fetchFriendships(currentUser.id);
+      this.props.fetchFriendships(this.props.currentUser.id);
     }
   }
 
@@ -62,7 +62,7 @@ class Friends extends React.Component {
     if (friendId) {
       this.props.createfriendship({ user_id: currentUser.id, friend_id: friendId });
     }
-    
+
     this.closeModal();
   }
 
