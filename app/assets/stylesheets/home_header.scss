@@ -1,4 +1,50 @@
 .home-header {
   background-color: #5BC5A7;
-  
+  min-height: 33px;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home-body {
+  display: flex;
+  justify-content: space-around;
+  align-items: left;
+}
+
+.account-setup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.account-setup:hover {
+  background-color: #48be9d;
+}
+
+.user-icon {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.btn-account {
+  border: none;
+  background-color: Transparent;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #8CD6C1;
+}
+
+.account-setup:hover + .arrow-down {
+  border-top: 4px solid #fff;
 }

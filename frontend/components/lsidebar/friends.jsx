@@ -17,7 +17,6 @@ const customStyles = {
 class Friends extends React.Component {
   constructor(props) {
     super(props);
-    const currentUser = this.props.currentUser;
 
     this.state = {
       modalIsOpen: false,
@@ -60,7 +59,7 @@ class Friends extends React.Component {
     });
 
     if (friendId) {
-      this.props.createfriendship({ user_id: currentUser.id, friend_id: friendId });
+      this.props.createfriendship({ user_id: this.props.currentUser.id, friend_id: friendId });
     }
 
     this.closeModal();
