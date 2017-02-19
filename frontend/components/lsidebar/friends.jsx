@@ -72,7 +72,7 @@ class Friends extends React.Component {
     });
 
     if (friendId) {
-      this.props.createfriendship({ user_id: currentUser.id, friend_id: friendId });
+      this.props.createfriendship({ user_id: this.props.currentUser.id, friend_id: friendId });
     }
 
     this.closeModal();

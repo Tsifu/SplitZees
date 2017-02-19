@@ -27,7 +27,6 @@ const FriendshipsReducer = (oldState = _defaultState, action) => {
       );
 
     case RECEIVE_FRIEND:
-      debugger
       let updatedFriends = merge( {}, oldState.friends, { [action.friend.id]: action.friend } );
 
       let updatedProspectiveFriends = merge( {}, oldState.prospectiveFriends);

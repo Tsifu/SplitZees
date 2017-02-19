@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import FriendsContainer from '../lsidebar/friends_container';
 import HomeHeaderContainer from './header/home_header_container';
+import DashboardContainer from './dashboard/dashboard_container';
 
 class Home extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Home extends React.Component {
             </div>
 
             <div className="main-section">
-              Hello
+              <DashboardContainer />
             </div>
 
             <div className="rsidebar">
