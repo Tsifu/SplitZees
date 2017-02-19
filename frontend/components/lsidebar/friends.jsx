@@ -4,13 +4,25 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 const customStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+  },
   content : {
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -170%)',
+    border                : '1px solid #ccc',
+    borderRadius          : '4px',
+    padding               : '0px',
+
   }
 };
 
@@ -99,18 +111,27 @@ class Friends extends React.Component {
 
     let results = this.matches().map((result) => {
       return (
-        <li key={result.id} onClick={this.selectName}>{result.email}</li>
+        <li className="result-email" key={result.id} onClick={this.selectName}>
+          <i className="fa fa-user" aria-hidden="true"></i>
+            {result.email}
+        </li>
       );
     });
 
     return (
       <div>
-        <h2>FRIENDS</h2>
-        <button onClick={this.openModal}>+add</button>
-        <ul>
+        <div className="friend-menu">
+          <div className="friend-title">FRIENDS</div>
+          <button className="add-friend-btn" onClick={this.openModal}>+add</button>
+        </div>
+
+        <ul className="friends-list">
           {
             this.props.friends.map(friend => (
-              <li key={friend.id}>{friend.username}</li>
+              <li className="friend" key={friend.id}>
+                <i className="fa fa-user" aria-hidden="true"></i>
+                {friend.username}
+              </li>
             ))
           }
         </ul>
@@ -124,21 +145,31 @@ class Friends extends React.Component {
           >
 
           <div className="searchForFriends">
-            <form onSubmit={this.handleSubmit}>
-              <label>Search for friend by email address
-                <input
-                  type="text"
-                  onChange={this.handleInput}
-                  value={this.state.inputVal}
-                  placeholder="Search..."
-                  />
-              </label>
+            <div className="searchHeader">
+              Search for friend
+            </div>
+            <form className="submit-form" onSubmit={this.handleSubmit}>
 
-              <button onClick={this.closeModal}>Close Modal</button>
+              <div>
+                <label>
+                  <input
+                    type="text"
+                    onChange={this.handleInput}
+                    value={this.state.inputVal}
+                    placeholder=" Search by email..."
+                    className="search-field"
+                    />
+                </label>
+              </div>
 
-              <input type="submit" value="Add Friend"/>
+              <div>
+                <button className="search-cancel" onClick={this.closeModal}>Cancel</button>
+                <input className="search-save" type="submit" value="Save"/>
+              </div>
+            </form>
 
-              <ul>
+
+              <ul className="search-results">
                 <ReactCSSTransitionGroup
                   transitionName='auto'
                   transitionEnterTimeout={500}
@@ -146,7 +177,6 @@ class Friends extends React.Component {
                   {results}
                 </ReactCSSTransitionGroup>
               </ul>
-            </form>
           </div>
 
         </Modal>

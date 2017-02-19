@@ -1,4 +1,11 @@
-.home-header {
+.home-nav {
   background-color: #5BC5A7;
-  
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin: 0 auto;
+  width: 950px;
 }

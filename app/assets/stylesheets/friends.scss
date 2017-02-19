@@ -1,0 +1,43 @@
+.friend-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+  margin-right: 15px;
+  background: #f6f6f6;
+  color: #ccc;
+  font-size: 11px;
+  margin-top: 5px;
+  border-top: 1px solid #eee;
+  padding: 0 5px;
+}
+
+.friend:hover {
+  background: #eee;
+  color: #999;
+  border-top-color: #e9e9e9;
+  border-bottom-color: #e6e6e6;
+  cursor: pointer;
+}
+
+.add-friend-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.friend-title {
+  font-size: 12px;
+}
+
+.friends-list {
+  margin: 0 auto;
+  padding-left: 5px;
+}
+
+.friend {
+  padding-left: 10px;
+  padding-top: 3px;
+  margin-right: 15px;
+}

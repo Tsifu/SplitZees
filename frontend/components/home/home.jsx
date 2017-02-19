@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import FriendsContainer from '../lsidebar/friends_container';
+import HomeHeaderContainer from './header/home_header_container';
 
 class Home extends React.Component {
   constructor(props) {
@@ -21,14 +22,24 @@ class Home extends React.Component {
 
     return (
       <div className="home">
-        <div className="home-header">
-          Welcome {this.props.currentUser.username}!
-          <button onClick={this.signout}>Log Out</button>
-        </div>
+        <nav className="home-nav">
+          <HomeHeaderContainer />
+        </nav>
 
-        <div className="lsidebar">
-          <FriendsContainer />
-        </div>
+        <main>
+          <div className="main-content group">
+            <div className="lsidebar">
+              <FriendsContainer />
+            </div>
+
+            <div className="main-section">
+              Hello
+            </div>
+
+            <div className="rsidebar">
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
