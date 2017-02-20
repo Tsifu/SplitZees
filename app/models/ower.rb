@@ -19,10 +19,6 @@ class Ower < ApplicationRecord
   # seed data's relationship and model methods
   # after_create :set_status
 
-  def set_status
-    self.paid = false
-  end
-
   belongs_to :bill,
     class_name: "Bill",
     primary_key: :id,
@@ -31,4 +27,14 @@ class Ower < ApplicationRecord
   has_one :financer,
     through: :bill,
       source: :payer
+
+  def set_status
+    self.paid = false
+  end
+
+  def self.record_bill(bill_id, owers)
+    owers.each do |key, value|
+      Ower.create(amount: value[:amount].to_f, user_id: value[:user_id].to_i, bill_id: bill_id, paid: false)
+    end
+  end
 end
