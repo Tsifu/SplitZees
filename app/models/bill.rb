@@ -13,7 +13,15 @@
 #
 
 class Bill < ApplicationRecord
-  validates :amount, :description, :bill_date, :payer_id, :paid, presence: true
+  validates :amount, :description, :bill_date, :payer_id, presence: true
+
+  # Comment out after testing - commented out to test
+  # seed data's relationship and model methods
+  # after_create :set_status
+
+  def set_status
+    self.paid = false
+  end
 
   belongs_to :payer,
     class_name: "User",

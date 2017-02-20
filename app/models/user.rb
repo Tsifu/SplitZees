@@ -68,21 +68,19 @@ class User < ApplicationRecord
 	end
 
 	def outstanding_receivables
-		self.bills.where(paid: "false").include(:owers)
+		self.bills.includes(:owers).where(paid: false)
 	end
 
 	def outstanding_payables
-		all_bills = Ower.where(payer_id: self.id).include(:bill)
-		all_bills.select { |bill| bill.paid == false }
+		Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, false)
 	end
 
 	def bills_you_paid_and_settled
-		self.bills.where(paid: "true").include(:owers)
+		self.bills.includes(:owers).where(paid: true)
 	end
 
 	def bills_you_owed_and_settled
-		all_bills_you_owed = Ower.where(payer_id: self.id).include(:bill)
-		all_bills_you_owed.select { |bill| bill.paid == true }
+		Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, true)
 	end
 
 	def ttl_amount(outstanding_rec_or_pay)
@@ -94,20 +92,12 @@ class User < ApplicationRecord
 		bill_amounts.reduce(:+)
 	end
 
-	def friends_with_bill_detail(outstanding_bills)
-		friends_who_owe_you = {}
+	def find_bills_with_friend
+		bills = {}
 
-		outstanding_bills.each do |bill|
-			friends_who_owe_you[bill.user_id] = {
-				bill_id: bill.id,
-				amount: bill.amount,
-				description: bill.description,
-				bill_date: bill.date,
-				paid: bill.paid
-			}
-		end
+		outstanding_bills = self.bills.includes(:owers)
 
-		friends_who_owe_you
+		outstanding_bills
 	end
 
 	private
