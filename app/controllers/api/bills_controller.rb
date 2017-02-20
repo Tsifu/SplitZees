@@ -6,8 +6,6 @@ class Api::BillsController < ApplicationController
     if @bill.save
       render "api/bills/bill"
 
-      params[:bill][:owers].each do |id|
-
     else
       render json: @bill.errors.full_messages, status: 422
     end
