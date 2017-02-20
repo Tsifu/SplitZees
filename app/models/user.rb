@@ -72,15 +72,31 @@ class User < ApplicationRecord
 	end
 
 	def outstanding_payables
-		Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, false)
+		outstanding_payables = []
+
+		payables = Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, false)
+
+		payables.each do |payable|
+			outstanding_payables << payable.bill
+		end
+
+		outstanding_payables
 	end
 
-	def bills_you_paid_and_settled
+	def settled_receivables
 		self.bills.includes(:owers).where(paid: true)
 	end
 
-	def bills_you_owed_and_settled
-		Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, true)
+	def settled_payables
+		settled_payables = []
+
+		payables = Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, true)
+
+		payables.each do |payable|
+			settled_payables << payable.bills
+		end
+
+		settled_payables
 	end
 
 	def ttl_amount(outstanding_rec_or_pay)

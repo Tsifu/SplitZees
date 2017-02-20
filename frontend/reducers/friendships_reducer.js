@@ -4,7 +4,7 @@ import {
   RECEIVE_FRIEND_ERRORS,
   RECEIVE_FRIENDSHIPS_ERRORS } from '../actions/friendships_actions';
 
-  import merge from 'lodash/merge';
+import merge from 'lodash/merge';
 
 const _defaultState = {
   friends: null,
