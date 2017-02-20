@@ -34,4 +34,4 @@ class HomeHeader extends React.Component {
   }
 }
 
-export default HomeHeader;
+export default withRouter(HomeHeader);

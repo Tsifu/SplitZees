@@ -1,49 +1,35 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import FriendsContainer from '../lsidebar/friends_container';
 import HomeHeaderContainer from './header/home_header_container';
 import DashboardContainer from './dashboard/dashboard_container';
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.signout = this.signout.bind(this);
+function Home(props) {
+  if (!props.currentUser) {
+    return <div></div>;
   }
 
-  signout() {
-    this.props.logout().then(() => {
-      this.props.router.push("/");
-    });
-  }
+  return (
+    <div className="home">
+      <nav className="home-nav">
+        <HomeHeaderContainer />
+      </nav>
 
-  render() {
-    if (!this.props.currentUser) {
-      return <div></div>;
-    }
-
-    return (
-      <div className="home">
-        <nav className="home-nav">
-          <HomeHeaderContainer />
-        </nav>
-
-        <main>
-          <div className="main-content group">
-            <div className="lsidebar">
-              <FriendsContainer />
-            </div>
-
-            <div className="main-section">
-              <DashboardContainer />
-            </div>
-
-            <div className="rsidebar">
-            </div>
+      <main>
+        <div className="main-content group">
+          <div className="lsidebar">
+            <FriendsContainer />
           </div>
-        </main>
-      </div>
-    );
-  }
+
+          <div className="main-section">
+            <DashboardContainer />
+          </div>
+
+          <div className="rsidebar">
+          </div>
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default withRouter(Home);
+export default Home;

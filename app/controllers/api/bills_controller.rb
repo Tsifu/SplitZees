@@ -7,7 +7,7 @@ class Api::BillsController < ApplicationController
       render "api/bills/bill"
 
       params[:bill][:owers].each do |id|
-        
+
     else
       render json: @bill.errors.full_messages, status: 422
     end
@@ -18,7 +18,7 @@ class Api::BillsController < ApplicationController
 
   private
   def bill_params
-    params.require(:bill).permit(:amount, :description, :bill_date)
+    params.require(:bill).permit(:amount, :description, :bill_date, owers: [])
   end
 
 end
