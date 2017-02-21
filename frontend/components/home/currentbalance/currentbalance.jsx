@@ -33,7 +33,7 @@ class CurrentBalance extends React.Component {
           <li key={friend[Object.keys(friend)[1]]}>
             <div className="li-friends">
               <div className="smallHumanLogo">
-                <img src={window.images.smallHuman}/>
+                <img class="smallHumanpic" src={window.images.smallHuman}/>
               </div>
 
               <div>
