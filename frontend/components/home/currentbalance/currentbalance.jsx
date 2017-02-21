@@ -11,8 +11,16 @@ class CurrentBalance extends React.Component {
       friendsYouOwe = this.props.youOwe.map((friend) => {
         return (
           <li key={friend[Object.keys(friend)[1]]}>
-            <div>{Object.keys(friend)[0]}</div>
-            <div>You owe ${Math.abs(friend[Object.keys(friend)[0]]).toFixed(2)}</div>
+            <div className="li-friends">
+              <div className="smallHumanLogo">
+                <img src={window.images.smallHuman}/>
+              </div>
+
+              <div>
+                <div className="friend-name">{Object.keys(friend)[0]}</div>
+                <div className="owed-amount">You owe <span>${Math.abs(friend[Object.keys(friend)[0]]).toFixed(2)}</span></div>
+              </div>
+            </div>
           </li>
         );
       });
@@ -23,8 +31,16 @@ class CurrentBalance extends React.Component {
       friendsWhoOweYou = this.props.youAreOwed.map((friend) => {
         return (
           <li key={friend[Object.keys(friend)[1]]}>
-            <div>{Object.keys(friend)[0]}</div>
-            <div>You owe ${Math.abs(friend[Object.keys(friend)[0]]).toFixed(2)}</div>
+            <div className="li-friends">
+              <div className="smallHumanLogo">
+                <img src={window.images.smallHuman}/>
+              </div>
+
+              <div>
+                <div className="friend-name">{Object.keys(friend)[0]}</div>
+                <div className="you-are-owed-amount">Owes you <span>${Math.abs(friend[Object.keys(friend)[0]]).toFixed(2)}</span></div>
+              </div>
+            </div>
           </li>
         );
       });
@@ -33,12 +49,18 @@ class CurrentBalance extends React.Component {
     return (
       <div className="outstanding-balances">
         <div className="you-owe">
+          <div className="friendsYouOwe-title">
+            YOU OWE
+          </div>
           <ul>
             {friendsYouOwe}
           </ul>
         </div>
 
         <div className="you-are-owed">
+          <div className="friendsWhoOweYou-title">
+            YOU ARE OWED
+          </div>
           <ul>
             {friendsWhoOweYou}
           </ul>
