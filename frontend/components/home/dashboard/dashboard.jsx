@@ -1,7 +1,16 @@
 import React from 'react';
 
 class Dashboard extends React.Component {
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchBills();
+    }
+  }
+
   render() {
+    let netBalanceColor = this.props.netBalance > 0 ? "positive-amount" : "negative-amount";
+    let youOweColor = this.props.youOwe > 0 ? "positive-amount balance-border" : "negative-amount balance-border";
+    let youAreOwedColor = this.props.youAreOwed > 0 ? "positive-amount" : "negative-amount";
 
     return (
       <div className="main-top">
@@ -16,18 +25,18 @@ class Dashboard extends React.Component {
 
         <div className="balances">
           <div className="total">
-            <div>total balance</div>
-            <div>$100.00</div>
+            <div className="balance-title">total balance</div>
+            <div className={netBalanceColor}>${this.props.netBalance.toFixed(2)}</div>
           </div>
 
-          <div>
-            <div>you owe</div>
-            <div>$50</div>
+          <div className="youOwe">
+            <div className="balance-title balance-border">you owe</div>
+            <div className={youOweColor}>${this.props.youOwe.toFixed(2)}</div>
           </div>
 
-          <div>
-            <div>you are owed</div>
-            <div>$150.00</div>
+          <div className="youAreOwed">
+            <div className="balance-title">you are owed</div>
+            <div className={youAreOwedColor}>${this.props.youAreOwed.toFixed(2)}</div>
           </div>
         </div>
       </div>

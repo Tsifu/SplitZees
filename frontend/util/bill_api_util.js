@@ -8,7 +8,7 @@ export const createBill = (bill) => (
 
 export const fetchBills = () => (
   $.ajax({
-    method: "SHOW",
-    url: `api/bills`,
+    method: "GET",
+    url: `api/bills/show`,
   })
 );

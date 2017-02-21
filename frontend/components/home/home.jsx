@@ -2,6 +2,7 @@ import React from 'react';
 import FriendsContainer from '../lsidebar/friends_container';
 import HomeHeaderContainer from './header/home_header_container';
 import DashboardContainer from './dashboard/dashboard_container';
+import CurrentBalanceContainer from './currentbalance/currentbalance_container';
 
 function Home(props) {
   if (!props.currentUser) {
@@ -22,6 +23,7 @@ function Home(props) {
 
           <div className="main-section">
             <DashboardContainer />
+            <CurrentBalanceContainer/>
           </div>
 
           <div className="rsidebar">

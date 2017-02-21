@@ -160,9 +160,9 @@ class User < ApplicationRecord
 		end
 
 		{
-			net_balance: total_owed_to_you + total_due_from_you,
-			you_owe: total_due_from_you,
-			you_are_owed: total_owed_to_you
+			netBalance: total_owed_to_you + total_due_from_you,
+			youOwe: total_due_from_you,
+			youAreOwed: total_owed_to_you
 		}
 	end
 
