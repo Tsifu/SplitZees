@@ -7,17 +7,21 @@ class Api::BillsController < ApplicationController
       @owers = params[:bill][:owers]
       Ower.record_bill(@bill.id, @owers)
       render json: @bill
-    else
+      else
       render json: @bill.errors.full_messages, status: 422
     end
   end
 
   def show
     @user = current_user
-    @outstandingReceivables = @user.outstanding_receivables
-    @outstandingPayables = @user.outstanding_payables
-    @settledReceivables = @user.settled_receivables
-    @settledPayables = @user.settled_payables
+    @outstanding_receivables = @user.outstanding_receivables
+    @outstanding_payables = @user.outstanding_payables
+    @settled_receivables = @user.settled_receivables
+    @settled_payables = @user.settled_payables
+    @balance_by_friends = @user.outstanding_balance_by_friends(@outstanding_receivables, @outstanding_payables)
+    @bills_by_friend = @user.bills_by_friend(@outstanding_receivables, @outstanding_payables)
+    @outstanding_balances = @user.outstanding_balances(@balance_by_friends)
+    render "api/bills/show"
   end
 
   def update

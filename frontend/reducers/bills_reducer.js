@@ -5,14 +5,13 @@ import {
 import merge from 'lodash/merge';
 
 const _defaultState = {
-  outstandingReceivables: {},
+  balanceByFriends: {},
+  billsByFriends: {},
+  outstandingBalances: {},
   outstandingPayables: {},
-
-  settledReceivables: {},
+  outstandingReceivables: {},
   settledPayables: {},
-
-  createBillErrors: {},
-  showBillErrors: {}
+  settledReceivables: {}
 };
 
 const BillsReducer = (oldState = _defaultState, action) => {

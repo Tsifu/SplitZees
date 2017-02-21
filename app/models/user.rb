@@ -68,52 +68,130 @@ class User < ApplicationRecord
 	end
 
 	def outstanding_receivables
-		self.bills.includes(:owers).where(paid: false)
+		outstanding_receivables = {}
+
+		bills = self.bills.includes(:owers).where(paid: false)
+
+		bills.each do |bill|
+			bill.owers.each do |ower|
+				outstanding_receivables[ower.id] = {
+					bill_id: bill.id,
+					bill_date: bill.bill_date,
+					bill_description: bill.description,
+					ower_id: ower.id,
+					owed_amount: -ower.amount,
+					ower_userid: ower.user_id
+				}
+			end
+		end
+
+		outstanding_receivables
 	end
 
 	def outstanding_payables
-		outstanding_payables = []
+		outstanding_payables = {}
 
 		payables = Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, false)
 
 		payables.each do |payable|
-			outstanding_payables << payable.bill
+			outstanding_payables[payable.id] = {
+				bill_id: payable.bill_id,
+				bill_date: payable.bill.bill_date,
+				bill_description: payable.bill.description,
+				payer_id: payable.bill.payer_id,
+				owed_amount: payable.amount,
+			}
 		end
 
 		outstanding_payables
 	end
 
 	def settled_receivables
-		self.bills.includes(:owers).where(paid: true)
+		settled_receivables = {}
+
+		bills = self.bills.includes(:owers).where(paid: true)
+
+		bills.each do |bill|
+			bill.owers.each do |ower|
+				settled_receivables[ower.id] = {
+					bill_id: bill.id,
+					bill_date: bill.bill_date,
+					bill_description: bill.description,
+					ower_id: ower.id,
+					owed_amount: -ower.amount,
+					ower_userid: ower.user_id,
+					settled_date: ower.paid_date
+				}
+			end
+		end
+
+		settled_receivables
 	end
 
 	def settled_payables
-		settled_payables = []
+		settled_payables = {}
 
 		payables = Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, true)
 
 		payables.each do |payable|
-			settled_payables << payable.bills
+			settled_payables[payable.id] = {
+				bill_id: payable.bill_id,
+				bill_date: payable.bill.bill_date,
+				bill_description: payable.bill.description,
+				payer_id: payable.bill.payer_id,
+				owed_amount: payable.amount,
+				settled_date: payable.paid_date
+			}
 		end
 
 		settled_payables
 	end
 
-	def ttl_amount(outstanding_rec_or_pay)
-		bill_amounts = []
-		outstanding_rec_or_pay.each do |bill|
-			bill_amounts << bill.amount
+	def outstanding_balances(balance_by_friends)
+		total_owed_to_you = 0
+		total_due_from_you = 0
+
+		balance_by_friends.each do |key, value|
+			if value > 0
+				total_owed_to_you += value
+			else
+				total_due_from_you += value
+			end
 		end
 
-		bill_amounts.reduce(:+)
+		{
+			net_balance: total_owed_to_you + total_due_from_you,
+			you_owe: total_due_from_you,
+			you_are_owed: total_owed_to_you
+		}
 	end
 
-	def find_bills_with_friend
-		bills = {}
+	def outstanding_balance_by_friends(receivables, payables)
+		balance_by_friend = Hash.new(0)
 
-		outstanding_bills = self.bills.includes(:owers)
+		receivables.each do |key, value|
+			balance_by_friend[value[:ower_userid]] += value[:owed_amount]
+		end
 
-		outstanding_bills
+		payables.each do |key, value|
+			balance_by_friend[value[:payer_id]] += value[:owed_amount]
+		end
+
+		balance_by_friend
+	end
+
+	def bills_by_friend(receivables, payables)
+		bills_by_friend = Hash.new { |h,k| h[k] = [] }
+
+		receivables.each do |key, value|
+			bills_by_friend[value[:ower_userid]] << value
+		end
+
+		payables.each do |key, value|
+			bills_by_friend[value[:payer_id]] << value
+		end
+
+		bills_by_friend
 	end
 
 	private
