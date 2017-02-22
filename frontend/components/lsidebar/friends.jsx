@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router';
 
 
 const customStyles = {
@@ -129,8 +130,10 @@ class Friends extends React.Component {
           {
             this.props.friends.map(friend => (
               <li className="friend" key={friend.id}>
+                <Link className="friend-link" to={`friends/${friend.id}`}>
                 <i className="fa fa-user" aria-hidden="true"></i>
                 {friend.username}
+                </Link>
               </li>
             ))
           }

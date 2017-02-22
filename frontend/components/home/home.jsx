@@ -3,6 +3,7 @@ import FriendsContainer from '../lsidebar/friends_container';
 import HomeHeaderContainer from './header/home_header_container';
 import DashboardContainer from './dashboard/dashboard_container';
 import CurrentBalanceContainer from './currentbalance/currentbalance_container';
+// import MainComponent from './main';
 
 function Home(props) {
   if (!props.currentUser) {
@@ -22,8 +23,7 @@ function Home(props) {
           </div>
 
           <div className="main-section">
-            <DashboardContainer />
-            <CurrentBalanceContainer/>
+            {props.children}
           </div>
 
           <div className="rsidebar">
