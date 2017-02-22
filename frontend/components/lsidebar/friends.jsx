@@ -120,7 +120,16 @@ class Friends extends React.Component {
     });
 
     return (
-      <div>
+      <div className="left-sidebar">
+        <div className="back-to-dashboard">
+          <Link className="dashboard-link" to="/home">
+            <div className="dashboard-path">
+              <img className="wallet" src={window.images.wallet}/>
+              <div className="dashboard-link-title">Dasboard</div>
+            </div>
+          </Link>
+        </div>
+
         <div className="friend-menu">
           <div className="friend-title">FRIENDS</div>
           <button className="add-friend-btn" onClick={this.openModal}>+add</button>

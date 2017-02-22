@@ -1,9 +1,7 @@
 import React from 'react';
 import FriendsContainer from '../lsidebar/friends_container';
 import HomeHeaderContainer from './header/home_header_container';
-import DashboardContainer from './dashboard/dashboard_container';
-import CurrentBalanceContainer from './currentbalance/currentbalance_container';
-// import MainComponent from './main';
+import MainComponent from './main';
 
 function Home(props) {
   if (!props.currentUser) {
@@ -23,10 +21,11 @@ function Home(props) {
           </div>
 
           <div className="main-section">
-            {props.children}
+            {props.main}
           </div>
 
           <div className="rsidebar">
+            {props.rightpanel}
           </div>
         </div>
       </main>

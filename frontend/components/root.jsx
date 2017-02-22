@@ -6,8 +6,7 @@ import SessionContainer from './session/session_form_container';
 import SignUpContainer from './signup/signup_form_container';
 import HomeContainer from './home/home_container';
 import TransactionsContainer from './transactionsbyfriend/transaction_container';
-import DashboardContainer from './home/dashboard/dashboard_container';
-import CurrentBalanceContainer from './home/currentbalance/currentbalance_container';
+import MainComponent from './home/main';
 
 const Root = ({ store }) => {
 
@@ -27,8 +26,8 @@ const Root = ({ store }) => {
         <Route path='/' component={App}/>
         <Route path='/signup' component={SignUpContainer} onEnter={ redirectIfLoggedIn } />
         <Route path='/home' component={HomeContainer} onEnter={ redirectUnlessLoggedIn }>
-          <IndexRoute component={DashboardContainer}/>
-          <Route path='/friends/:friendId' component={TransactionsContainer} onEnter={ redirectUnlessLoggedIn }/>
+          <IndexRoute components={ { main: MainComponent}}/>
+          <Route path='/friends/:friendId' components={ {main: TransactionsContainer, rightpanel : TransactionsContainer}} onEnter={ redirectUnlessLoggedIn }/>
         </Route>
       </Router>
     </Provider>
