@@ -1,9 +1,6 @@
 import React from 'react';
 
 class Transactions extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let showBills = this.props.bills.map(bill => {
@@ -12,7 +9,7 @@ class Transactions extends React.Component {
           <li key={bill.id}>
             <div>
               <div>
-                {bill.bill_date}
+                {bill.bill_date.toString("MMMM DD yyy")}
               </div>
 
               <div>

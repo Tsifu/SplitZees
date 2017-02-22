@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     name: friendName,
-    netBalance: state.balanceByFriends[friendId]
+    netBalance: state.bills.balanceByFriends[friendId]
   });
 };
 
