@@ -24,7 +24,6 @@ const BillsReducer = (oldState = _defaultState, action) => {
       billsByFriends: action.billsByFriends,
       outstandingBalances: action.outstandingBalances,
       outstandingReceivables: action.outstandingReceivables,
-      outstandingPayables: action.outstandingPayables
     };
     return merge( {}, oldState, updatedState);
 

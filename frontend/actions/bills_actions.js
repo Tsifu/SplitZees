@@ -5,7 +5,10 @@ export const RECEIVE_ALL_BILLS = "RECEIVE_ALL_BILLS";
 
 export const receiveBill = (bill) => ({
   type: RECEIVE_BILL,
-
+  balanceByFriends: bill.balanceByFriends,
+  billsByFriends: bill.billsByFriends,
+  outstandingBalances: bill.outstandingBalances,
+  outstandingReceivables: bill.outstandingReceivables
 });
 
 export const receiveAllBills = (bills) => {

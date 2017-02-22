@@ -3,11 +3,16 @@ class Api::BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     @bill.payer_id = current_user.id
     @bill.paid = false
-    debugger
     if @bill.save
       @owers = params[:bill][:owers]
       Ower.record_bill(@bill.id, @owers)
-      render json: @bill
+      @user = current_user
+      @outstanding_receivables = @user.outstanding_receivables
+      @outstanding_payables = @user.outstanding_payables
+      @balance_by_friends = @user.outstanding_balance_by_friends(@outstanding_receivables, @outstanding_payables)
+      @bills_by_friend = @user.bills_by_friend(@outstanding_receivables, @outstanding_payables)
+      @outstanding_balances = @user.outstanding_balances(@balance_by_friends)
+      render 'api/bills/create'
     else
       render json: @bill.errors.full_messages, status: 422
     end
