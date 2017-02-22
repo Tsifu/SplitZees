@@ -34,31 +34,97 @@ class Dashboard extends React.Component {
       amount: "",
       date: "",
       splitAmount: 0,
-      inputVal: ""
+      inputVal: "",
+      friends: {}
     };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.addFriend = this.addFriend.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   openModal() {
+
     this.setState({ modalIsOpen: true });
   }
 
   closeModal() {
       this.setState({modalIsOpen: false});
+        this.clearState();
+  }
+
+  clearState() {
+    this.setState({description:"", owers: [], amount:"", date:"", splitAmount: 0});
   }
 
   componentDidMount() {
     if (this.props.currentUser) {
       this.props.fetchBills();
+      this.props.fetchFriendships(this.props.currentUser.id);
     }
+  }
+
+  update(input_type) {
+    return (
+      event => {
+        this.setState( {[input_type]: event.target.value });
+      }
+    );
+  }
+
+  addFriend(event) {
+    let owers = this.state.owers.slice();
+    owers.push(event.currentTarget.value);
+    this.setState({ owers: owers });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let friends = {};
+    this.props.friends.map(friend => {
+      friends[friend.username] = friend.id;
+    });
+
+    let owersAndAmount = {};
+    let splitAmount = this.state.amount / (this.state.owers.length + 1);
+    splitAmount = -splitAmount.toFixed(2);
+    this.state.owers.forEach(ower => {
+      owersAndAmount[friends[ower]] = {
+        amount: splitAmount,
+        user_id: friends[ower]
+      };
+    });
+
+    let bill = {
+      description : this.state.description,
+      amount : this.state.amount,
+      bill_date : this.state.date,
+      owers : owersAndAmount
+    };
+
+    this.props.createBill(bill);
+    this.closeModal();
+    this.clearState();
   }
 
   render() {
     let netBalanceColor = this.props.netBalance > 0 ? "positive-amount" : "negative-amount";
     let youOweColor = this.props.youOwe > 0 ? "positive-amount balance-border" : "negative-amount balance-border";
     let youAreOwedColor = this.props.youAreOwed > 0 ? "positive-amount" : "negative-amount";
+    let selectOption;
+
+    if (this.props.friends) {
+      selectOption = this.props.friends.map(friend => {
+        return (
+          <option key={friend.id} value={friend.value}>{friend.username}</option>
+        );
+      });
+    }
+
+    let owers = this.state.owers.map((friend, idx) => {
+      return (<li key={idx}>{friend}</li>);
+    });
 
     return (
       <div className="main-top">
@@ -87,6 +153,7 @@ class Dashboard extends React.Component {
             <div className={youAreOwedColor}>${this.props.youAreOwed.toFixed(2)}</div>
           </div>
         </div>
+
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
@@ -96,7 +163,46 @@ class Dashboard extends React.Component {
           >
           <div className="addBillModal">
             <div className="addBillHeader">Add a bill</div>
+            <ul>
+              {owers}
+            </ul>
             <form className="submit-form" onSubmit={this.handleSubmit}>
+
+              <select name="add-friend" onChange={this.addFriend}>
+                <option disabled selected value> -- Add Friend -- </option>
+                {selectOption}
+              </select>
+
+              <div className="bill-info">
+                <input
+                  type="text"
+                  value={this.state.description}
+                  placeholder="Enter Description"
+                  onChange={this.update('description')}
+                />
+
+                <input
+                  type="number"
+                  value={this.state.amount}
+                  placeholder="Enter Amount"
+                  onChange={this.update('amount')}
+                />
+
+                <input
+                  type="date"
+                  value={this.state.date}
+                  onChange={this.update('date')}
+                />
+              </div>
+
+            <br/>
+
+            <div className="bill-button-group">
+              <div className="add-friend-button">
+                <input type="submit" value="Save"></input>
+              </div>
+              <button className="close-modal-button" onClick={this.closeModal}>Close</button>
+            </div>
 
             </form>
           </div>

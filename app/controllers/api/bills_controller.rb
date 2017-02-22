@@ -3,11 +3,12 @@ class Api::BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     @bill.payer_id = current_user.id
     @bill.paid = false
+    debugger
     if @bill.save
       @owers = params[:bill][:owers]
       Ower.record_bill(@bill.id, @owers)
       render json: @bill
-      else
+    else
       render json: @bill.errors.full_messages, status: 422
     end
   end
