@@ -16,7 +16,7 @@ const App = ({children}) => {
         </div>
 
         <div className="slogan">
-          <strong>Share bills</strong> and IOUs. Its alright to leave your wallet at home!
+          <strong>Share bills</strong> and IOUs. It's alright to leave your wallet at home!
         </div>
       </div>
     </div>

@@ -17,7 +17,8 @@ const mapStateToProps = (state) => {
     netBalance: netBalance,
     youAreOwed: youAreOwed,
     youOwe: youOwe,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    friends: state.friendships.friends
   });
 };
 

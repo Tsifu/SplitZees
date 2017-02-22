@@ -33,7 +33,7 @@ class CurrentBalance extends React.Component {
           <li key={friend[Object.keys(friend)[1]]}>
             <div className="li-friends">
               <div className="smallHumanLogo">
-                <img class="smallHumanpic" src={window.images.smallHuman}/>
+                <img className="smallHumanpic" src={window.images.smallHuman}/>
               </div>
 
               <div>
@@ -44,6 +44,7 @@ class CurrentBalance extends React.Component {
           </li>
         );
       });
+
     }
 
     return (
@@ -52,7 +53,7 @@ class CurrentBalance extends React.Component {
           <div className="friendsYouOwe-title">
             YOU OWE
           </div>
-          <ul>
+          <ul className="friends-ul">
             {friendsYouOwe}
           </ul>
         </div>
@@ -61,7 +62,7 @@ class CurrentBalance extends React.Component {
           <div className="friendsWhoOweYou-title">
             YOU ARE OWED
           </div>
-          <ul>
+          <ul className="friends-ul">
             {friendsWhoOweYou}
           </ul>
         </div>

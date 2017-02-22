@@ -33,7 +33,7 @@ class SignUpForm extends React.Component {
         <div className="signup-form">
           <div>
             <ul className="error-messages">
-              {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              {this.props.errors.map((error, idx) => <li className="errorli" key={idx}>{error}</li>)}
             </ul>
             <h2>INTRODUCE YOURSELF</h2>
           </div>
@@ -65,7 +65,7 @@ class SignUpForm extends React.Component {
               <br/>
                 <input
                   className="inpt-signup"
-                  type="text"
+                  type="password"
                   onChange={this.update("password")}
                   value={this.state.password}
                   />

@@ -13,7 +13,7 @@
 
 .btn-signup {
   background: #ff652f;
-
+  margin-left: 5px;
 
 }
 
@@ -21,6 +21,7 @@
   background: #5BC5A7;
   text-shadow: 0 -1px 0 #318970;
   margin-left: 5px;
+  margin-right: 5px;
 }
 
 .btn-signin:focus {
@@ -52,10 +53,15 @@
     top: 39px;
     transition: all 500ms;
     overflow: hidden;
+    color: #ff652f;
 }
 
 .dropdown-content.hide {
     padding: 0;
     border: 0;
     height: 0px;
+}
+
+.login {
+  margin-right: 5px;
 }

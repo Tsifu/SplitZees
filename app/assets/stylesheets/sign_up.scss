@@ -1,8 +1,9 @@
 .signup-page {
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-60%, -90%);
+  width: 500px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 200px;
+  padding-top: 50px;
 }
 
 .signup-container {
@@ -81,4 +82,17 @@ input {
   text-shadow: 0 -1px #9a2a38;
   color: #fff;
   font-size: 14px;
+}
+
+.error-messages {
+  margin: 0 auto;
+}
+
+ul {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.errorli {
+  padding: 5px;
 }
