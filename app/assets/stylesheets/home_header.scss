@@ -5,8 +5,16 @@
 .home-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 35px;
   margin: 0 auto;
   width: 950px;
-  
+
+}
+
+.logo {
+  padding-left: 45px;
+  padding-top: 25px;
+  width: 200px;
+  height: 48px;
 }

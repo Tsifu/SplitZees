@@ -7,38 +7,42 @@ class Transactions extends React.Component {
       if (bill.ower_userid) {
         return (
           <li key={bill.id}>
-            <div>
-              <div>
+            <div className="bill-detail">
+            <div className="bill-date-des">
+              <div className="bill-date">
                 {bill.bill_date.toString("MMMM DD yyy")}
               </div>
 
-              <div>
+              <div className="bill-des">
                 {bill.bill_description}
               </div>
             </div>
 
             <div>
-                <div>you lent {this.props.name}</div>
-                <div>${bill.owed_amount.toFixed(2)}</div>
+                <div className="borrow-title">you lent {this.props.name}</div>
+                <div className="positive-amount-detail">${bill.owed_amount.toFixed(2)}</div>
+            </div>
             </div>
           </li>
         );
       } else {
         return (
           <li key={bill.id}>
-            <div>
-              <div>
+            <div className="bill-detail">
+            <div className="bill-date-des">
+              <div className="bill-date">
                 {bill.bill_date}
               </div>
 
-              <div>
+              <div className="bill-des">
                 {bill.bill_description}
               </div>
             </div>
 
             <div>
-                <div>{this.props.name} lent you</div>
-                <div>${Math.abs(bill.owed_amount)}</div>
+                <div className="borrow-title">{this.props.name} lent you</div>
+                <div className="negative-amount-amount-detail">${(Math.abs(bill.owed_amount)).toFixed(2)}</div>
+            </div>
             </div>
           </li>
         );
@@ -47,7 +51,12 @@ class Transactions extends React.Component {
 
     return (
       <div>
-        <div>{this.props.name}</div>
+        <div className="transaction-header">
+          <div className="largeHumanLogo">
+            <img src={window.images.smallHuman}/>
+          </div>
+          <div className="name-of-friend">{this.props.name}</div>
+        </div>
         <div>
           <ul>
             {showBills}

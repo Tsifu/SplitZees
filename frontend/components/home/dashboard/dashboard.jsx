@@ -16,7 +16,7 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -170%)',
+    transform             : 'translate(-50%, -100%)',
     border                : '1px solid #ccc',
     borderRadius          : '4px',
     padding               : '0px',
@@ -123,7 +123,7 @@ class Dashboard extends React.Component {
     }
 
     let owers = this.state.owers.map((friend, idx) => {
-      return (<li key={idx}>{friend}</li>);
+      return (<li className="ower-li" key={idx}>{friend}</li>);
     });
 
     return (
@@ -163,32 +163,43 @@ class Dashboard extends React.Component {
           >
           <div className="addBillModal">
             <div className="addBillHeader">Add a bill</div>
-            <ul>
-              {owers}
-            </ul>
-            <form className="submit-form" onSubmit={this.handleSubmit}>
+            <div className="show-owers">
+              <div>With <strong>you</strong> and:  </div>
+              <div>
+                <ul className="list-of-owers">
+                  {owers}
+                </ul>
+              </div>
+          </div>
+          <div className="add-name-select">
+            <select name="add-friend" onChange={this.addFriend}>
+              <option disabled selected value> -- Add Friend -- </option>
+              {selectOption}
+            </select>
+          </div>
+            <form className="add-bill-form" onSubmit={this.handleSubmit}>
 
-              <select name="add-friend" onChange={this.addFriend}>
-                <option disabled selected value> -- Add Friend -- </option>
-                {selectOption}
-              </select>
 
               <div className="bill-info">
                 <input
+                  className="input-bill"
                   type="text"
                   value={this.state.description}
                   placeholder="Enter Description"
                   onChange={this.update('description')}
                 />
 
+              <br/>
                 <input
+                  className="input-bill"
                   type="number"
                   value={this.state.amount}
                   placeholder="Enter Amount"
                   onChange={this.update('amount')}
                 />
-
+              <br/>
                 <input
+                  className="input-bill"
                   type="date"
                   value={this.state.date}
                   onChange={this.update('date')}
@@ -196,13 +207,8 @@ class Dashboard extends React.Component {
               </div>
 
             <br/>
-
-            <div className="bill-button-group">
-              <div className="add-friend-button">
-                <input type="submit" value="Save"></input>
-              </div>
-              <button className="close-modal-button" onClick={this.closeModal}>Close</button>
-            </div>
+            <button className="close-modal-button" onClick={this.closeModal}>Close</button>
+            <input className="submit-add-bill" type="submit" value="Save"/>
 
             </form>
           </div>

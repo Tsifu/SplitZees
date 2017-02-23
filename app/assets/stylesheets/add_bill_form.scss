@@ -1,0 +1,87 @@
+.addBillHeader {
+  margin: 0 auto;
+  background-color: #5BC5A7;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 #318a71;
+  border-bottom: 1px solid #36977b;
+  width: 380px;
+  font-family: 'Lato', sans-serif;
+}
+
+.addBillModal {
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+.show-owers {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ower-li {
+  padding-left: 5px;
+}
+
+ul.list-of-owers li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+}
+
+ul.list-of-owers li:after {
+  content: ", ";
+}
+
+ul.tags li:last-child:after {
+  content: "";
+}
+
+select {
+  padding-top: 5px;
+  margin-top: 5px;
+  margin-left: 125px;
+  font-size: 15px;
+}
+
+.submit-add-bill {
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #5bc5a7;
+  color: #fff;
+  background: #5BC5A7;
+  width: 75px;
+  padding: 5px;
+  font-family: 'Lato', sans-serif;
+  margin-left: 5px;
+}
+
+.close-modal-button {
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #5BC5A7;
+  color: #fff;
+  background: #ff652f;
+  width: 80px;
+  padding: 7px;
+  font-family: 'Lato', sans-serif;
+}
+
+.add-bill-form {
+  margin-left: 120px;
+  padding: 5px;
+}
+
+.input-bill {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+}

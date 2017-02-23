@@ -43,6 +43,14 @@
   vertical-align: middle;
 }
 
+.addBill:hover {
+  background-color: #ff5216;
+}
+
+.settleBill:hover {
+  background-color: #48be9d;
+}
+
 .balances {
   display: flex;
   justify-content: space-around;;
@@ -58,6 +66,8 @@
 .youOwe {
   text-align: center;
   width: 180px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .youAreOwed {
@@ -78,6 +88,5 @@
 }
 
 .balance-border {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  width: 180px;
 }

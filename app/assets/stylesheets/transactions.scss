@@ -1,0 +1,73 @@
+.largeHumanLogo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 4px;
+  margin-left: 15px;
+  border: 1px solid #ddd;
+}
+
+.transaction-header {
+  border-bottom: 1px solid #ddd;
+  height: 60px;
+  background-color: #eee;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+}
+
+.name-of-friend {
+  padding-left: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.bill-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.bill-date-des {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.borrow-title {
+  color: #aaa;
+  font-size: 14px;
+  padding: 8px 4px 12px;
+  font-weight: bold;
+  margin-right: 55px;
+}
+
+.negative-amount-amount-detail {
+  color: #FF655D;
+  font-weight: 900;
+  text-align: center;
+vertical-align: middle;
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.positive-amount-detail {
+  color: #5BC5A7;
+  font-weight: 900;
+  text-align: center;
+vertical-align: middle;
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.bill-des {
+  padding-left: 15px;
+  font-size: 24px;
+  font-weight: bold
+}
+
+.bill-date {
+  padding-left: 15px;
+}
