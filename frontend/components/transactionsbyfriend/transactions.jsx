@@ -1,6 +1,12 @@
 import React from 'react';
 
 class Transactions extends React.Component {
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchFriendships(this.props.currentUser.id);
+      this.props.fetchBills();
+    }
+  }
 
   render() {
     let showBills = this.props.bills.map(bill => {

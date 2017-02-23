@@ -8,6 +8,10 @@ class SessionForm extends React.Component {
     this.state = { email: "", password: "", errors: {} };
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).then(() => {

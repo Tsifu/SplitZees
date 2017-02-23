@@ -21,6 +21,7 @@ const mapStateToProps = (state) => {
     youAreOwed = state.bills.outstandingBalances.youAreOwed;
     youOwe = state.bills.outstandingBalances.youOwe;
   }
+  
   return ({
     netBalance: netBalance,
     youAreOwed: youAreOwed,

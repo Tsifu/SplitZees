@@ -2,7 +2,7 @@ import React from 'react';
 
 class RightSide extends React.Component {
   render() {
-    let display;
+    let display = "$0.00";
 
     if (this.props.netBalance > 0) {
       display = (
@@ -11,7 +11,7 @@ class RightSide extends React.Component {
           <div className="positive-cf">${this.props.netBalance.toFixed(2)}</div>
         </div>
       );
-    } else {
+    } else if (this.props.netBalance < 0) {
       display = (
         <div>
           <div className="negative-cff">You owe {this.props.name}</div>

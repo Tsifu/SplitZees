@@ -2,6 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 class SignUpForm extends React.Component {
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   constructor(props) {
     super(props);
     this.state = { username: "", password: "", email: "" };

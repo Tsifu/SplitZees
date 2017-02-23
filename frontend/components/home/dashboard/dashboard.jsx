@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import SettleBillContainer from '../settlebill/settlebill_container';
 
 const customStyles = {
   overlay : {
@@ -29,6 +30,7 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       modalIsOpen: false,
+      sbModalIsOpen: false,
       owers: [],
       description: "",
       amount: "",
@@ -42,16 +44,25 @@ class Dashboard extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.addFriend = this.addFriend.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.openSBModal = this.openSBModal.bind(this);
+    this.closeSBModal = this.closeSBModal.bind(this);
   }
 
   openModal() {
-
     this.setState({ modalIsOpen: true });
   }
 
   closeModal() {
-      this.setState({modalIsOpen: false});
+      this.setState({modalIsOpen: false });
         this.clearState();
+  }
+
+  openSBModal() {
+    this.setState({ sbModalIsOpen: true });
+  }
+
+  closeSBModal() {
+    this.setState({ sbModalIsOpen: false });
   }
 
   clearState() {
@@ -133,7 +144,7 @@ class Dashboard extends React.Component {
 
           <div className="dashboard-buttons">
             <button className="addBill" onClick={this.openModal}>Add a bill</button>
-            <button className="settleBill">Settle up</button>
+            <button className="settleBill" onClick={this.openSBModal}>Settle up</button>
           </div>
         </div>
 
@@ -172,8 +183,8 @@ class Dashboard extends React.Component {
               </div>
           </div>
           <div className="add-name-select">
-            <select name="add-friend" onChange={this.addFriend}>
-              <option disabled selected value> -- Add Friend -- </option>
+            <select name="add-friend" onChange={this.addFriend} defaultValue="">
+              <option disabled value=""> -- Add Friend -- </option>
               {selectOption}
             </select>
           </div>
@@ -214,6 +225,7 @@ class Dashboard extends React.Component {
           </div>
         </Modal>
 
+          <SettleBillContainer closeSBModal={this.closeSBModal} sbModalIsOpen={this.state.sbModalIsOpen}/>
       </div>
     );
   }

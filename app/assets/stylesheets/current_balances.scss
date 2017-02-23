@@ -3,6 +3,18 @@
   justify-content: space-between;
   align-items: flex-start;
   height: 100%;
+  position: relative;
+}
+
+.outstanding-balances:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: #ccc;
 }
 
 
@@ -15,12 +27,12 @@
 
 .you-owe {
   width: 50%;
-  border-right: 1px solid #ddd;
+
 }
 
 .you-are-owed {
   width: 50%;
-  border-left: 1px solid #ddd;
+
 }
 
 .friendsWhoOweYou-title {
