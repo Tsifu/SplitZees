@@ -31,7 +31,7 @@ class SignUpForm extends React.Component {
       <div className="signup-page">
         <div className="signup-container">
         <div className="signup-logo">
-          <img src={window.images.smallLogo}/>
+          <img src={window.images.wallet}/>
         </div>
 
         <div className="signup-form">

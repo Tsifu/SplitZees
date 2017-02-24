@@ -118,7 +118,7 @@ class SettleBill extends React.Component {
 
   render() {
     let selectOption;
-    let showBills = "No outstanding balances";
+    let showBills = (<div className="show-bills-zero">No outstanding balances</div>);
 
     if (this.props.friends) {
       selectOption = this.props.friends.map(friend => {
@@ -217,10 +217,12 @@ class SettleBill extends React.Component {
                     value={this.state.paidDate}
                     onChange={this.update('paidDate')}
                   />
-                  <ul>
-                    {showBills}
-                  </ul>
               </form>
+              <div className="show-bills-to-settle">
+                <ul className="show-bill-details-by-friend">
+                  {showBills}
+                </ul>
+              </div>
               </div>
             </div>
 

@@ -14,7 +14,19 @@
 
 .logo {
   padding-left: 45px;
-  padding-top: 25px;
+  padding-top: 5px;
   width: 200px;
   height: 48px;
+}
+
+.btn-guestlogin:hover {
+  background-color: #C9C9C9;
+}
+
+.btn-signin:hover {
+  background-color: #48be9d;
+}
+
+.btn-signup:hover {
+  background-color: #ff5216;
 }
