@@ -38,16 +38,26 @@ class Ower < ApplicationRecord
     end
   end
 
-  def settle_bills_by_friend(ower_id, paid_date)
-    receivables_by_friend = current_user.bills.joins(:owers).where(owers: { user_id: 1, paid: false })
+  def self.settle_bills_by_friend(friend_id, paid_date, current_user_id)
+    current_user = User.find(current_user_id)
+    receivables_by_friend = current_user.bills.joins(:owers).where(owers: { user_id: friend_id, paid: false }).includes(:owers)
 
     receivables_by_friend.each do |bill|
       ower = bill.owers.first
       ower.update(paid: true, paid_date: paid_date)
     end
+
+    payables_to_friend = Ower.joins(:bill).where(owers: { user_id: current_user.id, paid: false }, bills: { payer_id: friend_id})
+
+    payables_to_friend.each do |payable|
+      payable.update(paid: true, paid_date: paid_date)
+    end
+
   end
 
-  def self.settle_individual_bill(bill_id, paid_date)
+  def self.settle_individual_bill(bill_id, paid_date, ower_userid)
+    ower = Ower.where("user_id = ? AND bill_id = ?", ower_userid, bill_id)
+    ower.update(paid: true, paid_date: paid_date)
   end
 
 end

@@ -1,4 +1,5 @@
 import * as BillsUtil from '../util/bill_api_util';
+import * as SettleUtil from '../util/settle_api_util';
 
 export const RECEIVE_BILL = "RECEIVE_BILL";
 export const RECEIVE_ALL_BILLS = "RECEIVE_ALL_BILLS";
@@ -30,4 +31,12 @@ export const fetchBills = () => dispatch => {
 
 export const createBill = (bill) => dispatch => {
   return BillsUtil.createBill(bill).then(bill => dispatch(receiveBill(bill)));
+};
+
+export const settleBill = (bill) => dispatch => {
+  return SettleUtil.settleBill(bill).then(bills => dispatch(receiveAllBills(bills)));
+};
+
+export const settleFriend = (friend) => dispatch => {
+  return SettleUtil.settleFriend(friend).then(bills => dispatch(receiveAllBills(bills)));
 };

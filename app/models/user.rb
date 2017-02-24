@@ -70,7 +70,7 @@ class User < ApplicationRecord
 	def outstanding_receivables
 		outstanding_receivables = {}
 
-		bills = self.bills.includes(:owers).where(paid: false)
+		bills = self.bills.includes(:owers).where(owers: { paid: false })
 
 		bills.each do |bill|
 			bill.owers.each do |ower|

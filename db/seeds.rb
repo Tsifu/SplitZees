@@ -49,21 +49,21 @@ bill5 = Bill.create!(amount: 50, description: "dinner", bill_date: Date.parse("J
 owe6 = Ower.create!(amount: -25, bill_id: bill5.id, user_id: user1.id, paid: false)
 
 bill6 = Bill.create!(amount: 60, description: "movie", bill_date: Date.parse("Jan 15 2017"), payer_id: guest.id, paid: true)
-owe7 = Ower.create!(amount: -15, bill_id: bill6.id, user_id: user1.id, paid: true)
-owe8 = Ower.create!(amount: -15, bill_id: bill6.id, user_id: friend4.id, paid: true)
-owe9 = Ower.create!(amount: -15, bill_id: bill6.id, user_id: friend5.id, paid: true)
+owe7 = Ower.create!(amount: -15, bill_id: bill6.id, user_id: user1.id, paid: true, paid_date: Date.parse("Jan 16 2017"))
+owe8 = Ower.create!(amount: -15, bill_id: bill6.id, user_id: friend4.id, paid: true, paid_date: Date.parse("Jan 21 2017"))
+owe9 = Ower.create!(amount: -15, bill_id: bill6.id, user_id: friend5.id, paid: true, paid_date: Date.parse("Jan 25 2017"))
 
 bill7 = Bill.create!(amount: 10, description: "cupcakes", bill_date: Date.parse("Jan 13 2017"), payer_id: guest.id, paid: true)
-owe10 = Ower.create!(amount: -5, bill_id: bill7.id, user_id: friend3.id, paid: true)
+owe10 = Ower.create!(amount: -5, bill_id: bill7.id, user_id: friend3.id, paid: true, paid_date: Date.parse("Jan 5 2017"))
 
 bill8 = Bill.create!(amount: 32, description: "zoo", bill_date: Date.parse("Jan 2 2017"), payer_id: guest.id, paid: true)
-owe11 = Ower.create!(amount: -16, bill_id: bill8.id, user_id: friend6.id, paid: true)
+owe11 = Ower.create!(amount: -16, bill_id: bill8.id, user_id: friend6.id, paid: true, paid_date: Date.parse("Jan 21 2017"))
 
 bill9 = Bill.create!(amount: 28, description: "snacks", bill_date: Date.parse("Jan 18 2017"), payer_id: guest.id, paid: true)
-owe12 = Ower.create!(amount: -16, bill_id: bill9.id, user_id: friend4.id, paid: true)
+owe12 = Ower.create!(amount: -16, bill_id: bill9.id, user_id: friend4.id, paid: true, paid_date: Date.parse("Jan 21 2017"))
 
 bill10 = Bill.create!(amount: 100, description: "drinks", bill_date: Date.parse("Jan 10 2017"), payer_id: guest.id, paid: true)
-owe13 = Ower.create!(amount: -50, bill_id: bill10.id, user_id: friend3.id, paid: true)
+owe13 = Ower.create!(amount: -50, bill_id: bill10.id, user_id: friend3.id, paid: true, paid_date: Date.parse("Jan 13 2017"))
 
 bill11 = Bill.create!(amount: 12, description: "movie", bill_date: Date.parse("Feb 18 2017"), payer_id: friend3.id, paid: false)
 owe14 = Ower.create!(amount: -6, bill_id: bill11.id, user_id: guest.id, paid: false)
@@ -84,16 +84,16 @@ owe20 = Ower.create!(amount: -24, bill_id: bill15.id, user_id: friend4.id, paid:
 owe21 = Ower.create!(amount: -24, bill_id: bill15.id, user_id: friend5.id, paid: false)
 
 bill16 = Bill.create!(amount: 15, description: "movie", bill_date: Date.parse("Jan 18 2017"), payer_id: user1.id, paid: true)
-owe22 = Ower.create!(amount: -7.50, bill_id: bill16.id, user_id: guest.id, paid: true)
+owe22 = Ower.create!(amount: -7.50, bill_id: bill16.id, user_id: guest.id, paid: true, paid_date: Date.parse("Jan 20 2017"))
 
 bill17 = Bill.create!(amount: 10, description: "cupcakes", bill_date: Date.parse("Jan 16 2017"), payer_id: friend6.id, paid: true)
-owe23 = Ower.create!(amount: -5, bill_id: bill17.id, user_id: guest.id, paid: true)
+owe23 = Ower.create!(amount: -5, bill_id: bill17.id, user_id: guest.id, paid: true, paid_date: Date.parse("Jan 18 2017"))
 
 bill18 = Bill.create!(amount: 20, description: "zoo", bill_date: Date.parse("Jan 5 2017"), payer_id: friend3.id, paid: true)
-owe24 = Ower.create!(amount: -10, bill_id: bill18.id, user_id: guest.id, paid: true)
+owe24 = Ower.create!(amount: -10, bill_id: bill18.id, user_id: guest.id, paid: true, paid_date: Date.parse("Jan 7 2017"))
 
 bill19 = Bill.create!(amount: 10, description: "snack", bill_date: Date.parse("Jan 21 2017"), payer_id: friend4.id, paid: true)
-owe25 = Ower.create!(amount: -5, bill_id: bill19.id, user_id: guest.id, paid: true)
+owe25 = Ower.create!(amount: -5, bill_id: bill19.id, user_id: guest.id, paid: true, paid_date: Date.parse("Jan 23 2017"))
 
 bill20 = Bill.create!(amount: 30, description: "drinks", bill_date: Date.parse("Jan 13 2017"), payer_id: friend5.id, paid: true)
-owe26 = Ower.create!(amount: -15, bill_id: bill20.id, user_id: guest.id, paid: true)
+owe26 = Ower.create!(amount: -15, bill_id: bill20.id, user_id: guest.id, paid: true, paid_date: Date.parse("Jan 15 2017"))

@@ -1,0 +1,32 @@
+.settle-bill-main {
+  width: 300px;
+  height: 300px;
+}
+
+.dropdown-content.hide {
+    padding: 0;
+    border: 0;
+    height: 0px;
+}
+
+.settle-bill {
+  display: block;
+}
+
+.settle-bill.hide {
+  padding: 0;
+  border: 0;
+  height: 0px;
+  display: none;
+}
+
+.settle-friend {
+  display: block;
+}
+
+.settle-friend.hide {
+  padding: 0;
+  border: 0;
+  height: 0px;
+  display: none;
+}
