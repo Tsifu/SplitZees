@@ -93,14 +93,12 @@ class SettleBill extends React.Component {
 
   billHandleSubmit(event) {
     event.preventDefault();
-
     let bill;
     bill = {
       bill_id: this.state.billId,
       paid_date: this.state.paidDate,
       ower_userid: this.state.owerUserid
     };
-
     this.props.settleBill(bill);
     this.props.closeSBModal();
     this.clearState();
@@ -134,7 +132,7 @@ class SettleBill extends React.Component {
       showBills = this.props.billsByFriends[this.state.friendId].map((bill,idx) => {
         let whoOwes;
         if (bill.owed_amount > 0) {
-          whoOwes = bill.ower_id;
+          whoOwes = bill.ower_userid;
         } else {
           whoOwes = this.props.currentUser.id;
         }
@@ -142,15 +140,15 @@ class SettleBill extends React.Component {
           <li key={idx}>
             <div className="bill-detail-settle">
               <input type="checkbox" onClick={ () => this.addBillToSettle(bill.bill_id, whoOwes)}/>
-              <div>
+              <div className="bill-d-s">
                 {bill.bill_date}
               </div>
 
-              <div>
+              <div className="bill-d-s">
                 {bill.bill_description}
               </div>
 
-              <div>
+              <div className="bill-d-s">
                 {bill.owed_amount}
               </div>
             </div>
