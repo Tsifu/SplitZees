@@ -183,7 +183,7 @@ class Dashboard extends React.Component {
               </div>
           </div>
           <div className="add-name-select">
-            <select name="add-friend" onChange={this.addFriend} defaultValue="">
+            <select className="add-friend" onChange={this.addFriend} defaultValue="">
               <option disabled value=""> -- Add Friend -- </option>
               {selectOption}
             </select>

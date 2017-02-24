@@ -16,7 +16,7 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -100%)',
+    transform             : 'translate(-50%, -70%)',
     border                : '1px solid #ccc',
     borderRadius          : '4px',
     padding               : '0px',
@@ -108,13 +108,11 @@ class SettleBill extends React.Component {
 
   friendHandleSubmit(event) {
     event.preventDefault();
-    debugger
     let friend;
     friend = {
       friend_id: this.state.friendId,
       paid_date: this.state.paidDate,
     };
-    debugger
     this.props.settleFriend(friend);
     this.props.closeSBModal();
     this.clearState();
@@ -142,17 +140,19 @@ class SettleBill extends React.Component {
         }
         return (
           <li key={idx}>
-            <input type="checkbox" onClick={ () => this.addBillToSettle(bill.bill_id, whoOwes)}/>
-            <div>
-              {bill.bill_date}
-            </div>
+            <div className="bill-detail-settle">
+              <input type="checkbox" onClick={ () => this.addBillToSettle(bill.bill_id, whoOwes)}/>
+              <div>
+                {bill.bill_date}
+              </div>
 
-            <div>
-              {bill.bill_description}
-            </div>
+              <div>
+                {bill.bill_description}
+              </div>
 
-            <div>
-              {bill.owed_amount}
+              <div>
+                {bill.owed_amount}
+              </div>
             </div>
           </li>
         );
@@ -172,24 +172,21 @@ class SettleBill extends React.Component {
           >
           <div className="settle-bill-main">
 
-            <div>Hellsdfasdfasfso</div>
+            <div className="s-b-header">Settle up</div>
             <div className="settle-bill-by-friend">
               <div className="add-name-select">
-
-                <br/>
-                <form>
-                  <input type="radio" name="settlement-type" value="settle by friend" onClick={this.showFriendForm}/>Settle by friend
-                  <input type="radio" name="settlement-type" value="settle by bill" onClick={this.showBillForm}/>Settle by bill
-
+                <form className="radio-select">
+                  <input type="radio" className="settlement-type" name="settlement-type" value="settle by friend" onClick={this.showFriendForm}/>Settle by friend
+                  <input type="radio" className="settlement-type" name="settlement-type" value="settle by bill" onClick={this.showBillForm}/>Settle by bill
                 </form>
               </div>
 
               <div className={dropdownSettleFriendForm}>
               <form className="settle-friend-form" onSubmit={this.friendHandleSubmit}>
-                <button onClick={() => this.props.closeSBModal()}>Cancel</button>
-                <input type="submit" value="Save"/>
-                <input type="text" value="dkjhfaskjfdhkjashf"/>
-                  <select name="add-friend" onChange={this.addFriend} defaultValue="">
+                <button className="settle-form-cancel" onClick={() => this.props.closeSBModal()}>Cancel</button>
+                <input className="settle-form-submit" type="submit" value="Save"/>
+
+                  <select className="add-friend-settle" onChange={this.addFriend} defaultValue="">
                     <option disabled value=""> -- Add Friend -- </option>
                     {selectOption}
                   </select>
@@ -206,10 +203,10 @@ class SettleBill extends React.Component {
 
               <div className={dropdownSettleBillForm}>
               <form className='settle-bill-form' onSubmit={this.billHandleSubmit}>
-                <button onClick={() => this.props.closeSBModal()}>Cancel</button>
-                <input type="submit" value="Save"/>
-                <input type="text" value="ldkfjal;skdfj"/>
-                  <select name="add-friend" onChange={this.addFriend} defaultValue="">
+                <button className="settle-form-cancel" onClick={() => this.props.closeSBModal()}>Cancel</button>
+                <input className="settle-form-submit" type="submit" value="Save"/>
+
+                  <select className="add-friend-settle" onChange={this.addFriend} defaultValue="">
                     <option disabled value=""> -- Add Friend -- </option>
                     {selectOption}
                   </select>

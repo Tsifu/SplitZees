@@ -9,7 +9,11 @@ class Transactions extends React.Component {
   }
 
   render() {
-    let showBills = this.props.bills.map(bill => {
+    let showBills = "No outstanding transactions";
+    if (this.props.bills) {
+
+
+    showBills = this.props.bills.map(bill => {
       if (bill.ower_userid) {
         return (
           <li key={bill.id}>
@@ -53,8 +57,9 @@ class Transactions extends React.Component {
           </li>
         );
       }
-    });
 
+      });
+    }
     return (
       <div>
         <div className="transaction-header">

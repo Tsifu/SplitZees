@@ -1,6 +1,6 @@
 .settle-bill-main {
-  width: 300px;
-  height: 300px;
+  width: 380px;
+  height: 500px;
 }
 
 .dropdown-content.hide {
@@ -29,4 +29,87 @@
   border: 0;
   height: 0px;
   display: none;
+}
+
+.s-b-header {
+  margin: 0 auto;
+  background-color: #5BC5A7;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 -1px 0 #318a71;
+  border-bottom: 1px solid #36977b;
+  width: 380px;
+  font-family: 'Lato', sans-serif;
+}
+
+.add-name-select {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.radio-select {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.settlement-type {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+}
+
+.settle-form-cancel {
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #5BC5A7;
+  color: #fff;
+  background: #ff652f;
+  width: 80px;
+  padding: 7px;
+  font-family: 'Lato', sans-serif;
+  margin-top: 8px;
+}
+
+.settle-form-submit {
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #5bc5a7;
+  color: #fff;
+  background: #5BC5A7;
+  width: 75px;
+  padding: 5px;
+  font-family: 'Lato', sans-serif;
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+.settle-friend-form {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.settle-bill-form {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.add-friend-settle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  width: 88%;
+}
+
+.bill-detail-settle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+}
+
+.bill-d-s {
+  margin: 5px;
 }
