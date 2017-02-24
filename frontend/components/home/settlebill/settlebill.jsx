@@ -134,10 +134,10 @@ class SettleBill extends React.Component {
         let amountToBeDisplayed;
         if (bill.owed_amount > 0) {
           whoOwes = bill.ower_userid;
-          amountToBeDisplayed = `You were paid ${bill.owed_amount}`;
+          amountToBeDisplayed = `You were paid $${bill.owed_amount.toFixed(2)}`;
         } else {
           whoOwes = this.props.currentUser.id;
-          amountToBeDisplayed = `You paid ${Math.abs(bill.owed_amount)}`;
+          amountToBeDisplayed = `You paid $${Math.abs(bill.owed_amount).toFixed(2)}`;
         }
         return (
           <li key={idx}>
