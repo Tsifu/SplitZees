@@ -29,26 +29,84 @@ class SettleBill extends React.Component {
     super(props);
 
     this.state = {
-      ower_userid: "",
-      bill_id: "",
-      paid_date: "",
+      owerUserid: "",
+      billId: "",
+      paidDate: "",
       showBillForm: false,
-      showFriendForm: false
+      showFriendForm: false,
+      friendsBills: "",
+      friendId: null,
     };
     this.showFriendForm = this.showFriendForm.bind(this);
     this.showBillForm = this.showBillForm.bind(this);
+    this.addFriend = this.addFriend.bind(this);
+    this.addBillToSettle = this.addBillToSettle.bind(this);
+    this.billHandleSubmit = this.billHandleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchFriendships(this.props.currentUser.id);
+      this.props.fetchBills();
+    }
+  }
+
+  clearState() {
+    this.setState({
+      owerUserid: "",
+      billId: "",
+      paidDate: "",
+      showBillForm: false,
+      showFriendForm: false,
+      friendsBills: "",
+      friendId: null,
+    });
   }
 
   showFriendForm() {
+    this.clearState();
     this.setState({ showFriendForm: true, showBillForm: false });
   }
 
   showBillForm() {
+    this.clearState();
     this.setState({ showFriendForm: false, showBillForm: true });
+  }
+
+  addFriend(event) {
+    let friendId = this.props.nameToId[event.currentTarget.value];
+    this.setState({ friendId: friendId });
+  }
+
+  addBillToSettle(billId, owerUserid) {
+    this.setState({ billId: billId, owerUserid: owerUserid });
+  }
+
+  update(input_type) {
+    return (
+      event => {
+        this.setState( {[input_type]: event.target.value });
+      }
+    );
+  }
+
+  billHandleSubmit(event) {
+    event.preventDefault();
+
+    let bill = {
+      bill_id: this.state.billId,
+      paid_date: this.state.paidDate,
+      ower_userid: this.state.owerUserid
+    };
+
+    this.props.settleBill(bill);
+    this.props.closeSBModal();
+    this.clearState();
   }
 
   render() {
     let selectOption;
+    let showBills = "No outstanding balances";
 
     if (this.props.friends) {
       selectOption = this.props.friends.map(friend => {
@@ -58,6 +116,32 @@ class SettleBill extends React.Component {
       });
     }
 
+    if (this.props.billsByFriends[this.state.friendId]) {
+      showBills = this.props.billsByFriends[this.state.friendId].map((bill,idx) => {
+        let whoOwes;
+        if (bill.owed_amount > 0) {
+          whoOwes = bill.ower_id;
+        } else {
+          whoOwes = this.props.currentUser.id;
+        }
+        return (
+          <li key={idx}>
+            <input type="checkbox" onClick={ () => this.addBillToSettle(bill.bill_id, whoOwes)}/>
+            <div>
+              {bill.bill_date}
+            </div>
+
+            <div>
+              {bill.bill_description}
+            </div>
+
+            <div>
+              {bill.owed_amount}
+            </div>
+          </li>
+        );
+      });
+    }
 
     let dropdownSettleBillForm = this.state.showBillForm ? "settle-bill" : "settle-bill hide";
     let dropdownSettleFriendForm = this.state.showFriendForm ? "settle-friend" : "settle-friend hide";
@@ -95,18 +179,28 @@ class SettleBill extends React.Component {
               </div>
 
               <div className={dropdownSettleBillForm}>
-              <form className='settle-bill-form'>
+              <form className='settle-bill-form' onSubmit={this.billHandleSubmit}>
+                <button onClick={() => this.props.closeSBModal()}>Cancel</button>
+                <input type="submit" value="Save"/>
                 <input type="text" value="ldkfjal;skdfj"/>
                   <select name="add-friend" onChange={this.addFriend} defaultValue="">
                     <option disabled value=""> -- Add Friend -- </option>
                     {selectOption}
                   </select>
+                  <input
+                    className="input-bill"
+                    type="date"
+                    value={this.state.paidDate}
+                    onChange={this.update('paidDate')}
+                  />
+                  <ul>
+                    {showBills}
+                  </ul>
               </form>
               </div>
             </div>
 
 
-            <button onClick={() => this.props.closeSBModal()}>Cancel</button>
         </div>
       </Modal>
     </div>

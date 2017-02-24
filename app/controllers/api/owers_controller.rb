@@ -19,6 +19,7 @@ class Api::OwersController < ApplicationController
   end
 
   def index
+    debugger
     Ower.settle_individual_bill(
       params[:bill][:bill_id],
       params[:bill][:paid_date],

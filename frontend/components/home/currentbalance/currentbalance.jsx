@@ -6,7 +6,7 @@ class CurrentBalance extends React.Component {
       return <div>hello</div>;
     }
 
-    let friendsYouOwe = "You current do not owe anyone";
+    let friendsYouOwe = "You are currently debt free";
     if (this.props.youOwe.length > 0) {
       friendsYouOwe = this.props.youOwe.map((friend) => {
         return (

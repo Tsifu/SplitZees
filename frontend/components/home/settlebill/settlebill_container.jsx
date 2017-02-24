@@ -4,35 +4,38 @@ import { fetchFriendships } from '../../../actions/friendships_actions';
 import { fetchBills, settleBill, settleFriend } from '../../../actions/bills_actions';
 
 const mapStateToProps = (state ,ownProps) => {
-  let netBalance = 0;
-  let youAreOwed = 0;
-  let youOwe = 0;
+  let loadedBalanceByFriends = {};
+  let loadedBillsByFriends = {};
   let loadedFriends = null;
+  let nameToId = {};
 
-  if (state.bills.outstandingBalances) {
-    netBalance = state.bills.outstandingBalances.netBalance;
-    youAreOwed = state.bills.outstandingBalances.youAreOwed;
-    youOwe = state.bills.outstandingBalances.youOwe;
+  if (state.bills.balanceByFriends) {
+    loadedBalanceByFriends = state.bills.balanceByFriends;
+    loadedBillsByFriends = state.bills.billsByFriends;
   }
 
   if (state.friendships.friends) {
     loadedFriends = Object.keys(state.friendships.friends)
       .map(id => state.friendships.friends[id]);
+
+    loadedFriends.forEach(friend => {
+      nameToId[friend.username] = friend.id;
+    });
   }
 
   return ({
-    netBalance: netBalance,
-    youAreOwed: youAreOwed,
-    youOwe: youOwe,
+    balanceByFriends: loadedBalanceByFriends,
+    billsByFriends: loadedBillsByFriends,
     currentUser: state.session.currentUser,
-    friends: loadedFriends
+    friends: loadedFriends,
+    nameToId: nameToId
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
-    updateBill: (bill) => dispatch(updateBill(bill)),
-    updateOwer: (ower) => dispatch(updateOwer(bill)),
+    settleBill: (bill) => dispatch(settleBill(bill)),
+    settleFriend: (ower) => dispatch(settleFriend(bill)),
     fetchFriendships: (id) => dispatch(fetchFriendships(id)),
     fetchBills: () => {
       return dispatch(fetchBills());
