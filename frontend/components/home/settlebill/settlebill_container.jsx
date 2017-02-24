@@ -35,7 +35,7 @@ const mapStateToProps = (state ,ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     settleBill: (bill) => dispatch(settleBill(bill)),
-    settleFriend: (ower) => dispatch(settleFriend(bill)),
+    settleFriend: (ower) => dispatch(settleFriend(ower)),
     fetchFriendships: (id) => dispatch(fetchFriendships(id)),
     fetchBills: () => {
       return dispatch(fetchBills());

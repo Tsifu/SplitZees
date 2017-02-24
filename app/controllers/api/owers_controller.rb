@@ -1,7 +1,7 @@
 class Api::OwersController < ApplicationController
   def create
     @user = current_user
-
+    debugger
     Ower.settle_bills_by_friend(
       params[:friend][:friend_id],
       params[:friend][:paid_date],
@@ -19,7 +19,7 @@ class Api::OwersController < ApplicationController
   end
 
   def index
-    debugger
+
     Ower.settle_individual_bill(
       params[:bill][:bill_id],
       params[:bill][:paid_date],

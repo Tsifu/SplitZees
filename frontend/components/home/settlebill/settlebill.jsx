@@ -42,6 +42,7 @@ class SettleBill extends React.Component {
     this.addFriend = this.addFriend.bind(this);
     this.addBillToSettle = this.addBillToSettle.bind(this);
     this.billHandleSubmit = this.billHandleSubmit.bind(this);
+    this.friendHandleSubmit = this.friendHandleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -93,13 +94,28 @@ class SettleBill extends React.Component {
   billHandleSubmit(event) {
     event.preventDefault();
 
-    let bill = {
+    let bill;
+    bill = {
       bill_id: this.state.billId,
       paid_date: this.state.paidDate,
       ower_userid: this.state.owerUserid
     };
 
     this.props.settleBill(bill);
+    this.props.closeSBModal();
+    this.clearState();
+  }
+
+  friendHandleSubmit(event) {
+    event.preventDefault();
+    debugger
+    let friend;
+    friend = {
+      friend_id: this.state.friendId,
+      paid_date: this.state.paidDate,
+    };
+    debugger
+    this.props.settleFriend(friend);
     this.props.closeSBModal();
     this.clearState();
   }
@@ -169,12 +185,22 @@ class SettleBill extends React.Component {
               </div>
 
               <div className={dropdownSettleFriendForm}>
-              <form className="settle-friend-form">
+              <form className="settle-friend-form" onSubmit={this.friendHandleSubmit}>
+                <button onClick={() => this.props.closeSBModal()}>Cancel</button>
+                <input type="submit" value="Save"/>
                 <input type="text" value="dkjhfaskjfdhkjashf"/>
                   <select name="add-friend" onChange={this.addFriend} defaultValue="">
                     <option disabled value=""> -- Add Friend -- </option>
                     {selectOption}
                   </select>
+
+                  <input
+                    className="input-bill"
+                    type="date"
+                    value={this.state.paidDate}
+                    onChange={this.update('paidDate')}
+                  />
+
               </form>
               </div>
 
