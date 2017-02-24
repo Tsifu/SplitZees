@@ -133,9 +133,9 @@ class Dashboard extends React.Component {
       });
     }
 
-    let owers; 
+    let owers;
     if (this.state.owers.length > 0) {
-      this.state.owers.joins(", ");
+      owers = this.state.owers.join(", ");
     }
 
     return (
@@ -177,7 +177,7 @@ class Dashboard extends React.Component {
             <div className="addBillHeader">Add a bill</div>
             <div className="show-owers">
               <div>With <strong>you</strong> and:  </div>
-              <div>
+              <div className="add-friends-area">
                   {owers}
               </div>
           </div>
