@@ -11,7 +11,7 @@ Bill.destroy_all
 Ower.destroy_all
 Friendship.destroy_all
 
-user1 = User.create!(username: "John", password: "John", email: "John@gmail.com")
+user1 = User.create!(username: "John", password: "John1234", email: "John@gmail.com")
 guest = User.create!(username: "Guest", password: "guest123", email: "guest@gmail.com")
 
 friend3 = User.create(username: "James", password: "password", email: "james@gmail.com")
