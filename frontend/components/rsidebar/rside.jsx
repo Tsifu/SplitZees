@@ -2,7 +2,7 @@ import React from 'react';
 
 class RightSide extends React.Component {
   render() {
-    let display = "$0.00";
+    let display = <div className="zero-balance">$0.00</div>;
 
     if (this.props.netBalance > 0) {
       display = (

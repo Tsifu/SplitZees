@@ -131,10 +131,13 @@ class SettleBill extends React.Component {
     if (this.props.billsByFriends[this.state.friendId]) {
       showBills = this.props.billsByFriends[this.state.friendId].map((bill,idx) => {
         let whoOwes;
+        let amountToBeDisplayed;
         if (bill.owed_amount > 0) {
           whoOwes = bill.ower_userid;
+          amountToBeDisplayed = `You were paid ${bill.owed_amount}`;
         } else {
           whoOwes = this.props.currentUser.id;
+          amountToBeDisplayed = `You paid ${Math.abs(bill.owed_amount)}`;
         }
         return (
           <li key={idx}>
@@ -149,7 +152,7 @@ class SettleBill extends React.Component {
               </div>
 
               <div className="bill-d-s">
-                {bill.owed_amount}
+                {amountToBeDisplayed}
               </div>
             </div>
           </li>

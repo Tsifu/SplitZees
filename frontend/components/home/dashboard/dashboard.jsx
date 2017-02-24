@@ -133,9 +133,10 @@ class Dashboard extends React.Component {
       });
     }
 
-    let owers = this.state.owers.map((friend, idx) => {
-      return (<li className="ower-li" key={idx}>{friend}</li>);
-    });
+    let owers; 
+    if (this.state.owers.length > 0) {
+      this.state.owers.joins(", ");
+    }
 
     return (
       <div className="main-top">
@@ -177,9 +178,7 @@ class Dashboard extends React.Component {
             <div className="show-owers">
               <div>With <strong>you</strong> and:  </div>
               <div>
-                <ul className="list-of-owers">
                   {owers}
-                </ul>
               </div>
           </div>
           <div className="add-name-select">

@@ -9,7 +9,7 @@ class Transactions extends React.Component {
   }
 
   render() {
-    let showBills = "No outstanding transactions";
+    let showBills = (<div className="no-outstanding-balance">No outstanding transactions</div>);
     if (this.props.bills) {
 
 
