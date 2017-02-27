@@ -60,7 +60,7 @@ bill8 = Bill.create!(amount: 32, description: "Zoo", bill_date: Date.parse("Jan 
 owe11 = Ower.create!(amount: -16, bill_id: bill8.id, user_id: friend6.id, paid: true, paid_date: Date.parse("Jan 21 2017"))
 
 bill9 = Bill.create!(amount: 28, description: "Snacks", bill_date: Date.parse("Jan 18 2017"), payer_id: guest.id, paid: true)
-owe12 = Ower.create!(amount: -16, bill_id: bill9.id, user_id: friend4.id, paid: true, paid_date: Date.parse("Jan 21 2017"))
+owe12 = Ower.create!(amount: -14, bill_id: bill9.id, user_id: friend4.id, paid: true, paid_date: Date.parse("Jan 21 2017"))
 
 bill10 = Bill.create!(amount: 100, description: "Drinks", bill_date: Date.parse("Jan 10 2017"), payer_id: guest.id, paid: true)
 owe13 = Ower.create!(amount: -50, bill_id: bill10.id, user_id: friend3.id, paid: true, paid_date: Date.parse("Jan 13 2017"))
