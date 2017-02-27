@@ -1,69 +1,46 @@
 # SplitZees
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
-
-[SplitWise link][splitwise]
+[SplitZees][heroku]
 
 [heroku]: https://splitzees.herokuapp.com/#/
-[splitwise]: https://secure.splitwise.com/
 
-## Minimum Viable Product
+SplitZees is a full-stack web application inspired by Splitwise.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
-SplitZees is a web application inspired by SplitWise built using Ruby on Rails
-and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
-following criteria with smooth, bug-free navigation, adequate seed data and
-sufficient CSS styling:
+## Features & Implementation
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
-- [ ] Add Friends
-- [ ] Add bills and categorize payer and payees amongst you and your friends
-- [ ] Show outstanding balances by friends and total amount you owe or they owe you
-- [ ] Settle bill
-- [ ] See individual bill detail show page
-- [ ] Production README [sample](/production_readme.md)
+SplitZees is a bill tracking application that allows users to monitor shared expenses between friends.  SplitZees currently offer four lives features to assist users in tracking expenses.
 
-## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
+  * **Adding Friends**: user can add other users as their friends
+  * **Adding Bills**: user can choose which friend(s) to allocate expenses to
+  * **Tracking Bills**: user can view outstanding balance by friends or outstanding transactions by friend
+  * **Settling Bills**: user can settle individual bills or outstanding balance by friend
 
-[wireframes]: ../docs/wireframes
-[components]: ../docs/components-hierarchy.md
-[sample-state]: ./sample-state.md
-[api-endpoints]: ../docs/api-endpoints.md
-[schema]: ../docs/schema.md
+### Add Friends
 
-## Implementation Timeline
+In order to allow users to add friends and split expenses, the database contains a friendship table.  The table contains two columns: user_id and friend_id.  This allows the database to join the current user with another user through their user id and create an one to one association.  To prevent duplication, the friendship model incorporates an uniqueness validation to avoid users from adding the same friend if the association has been established in the past.  Each friendship is also indexed for faster querying.
 
-### Phase 1: Backend setup and Front End User Authentication (2 days)
+On the front-end, two lists are fetched once the user logs in.  A friends list, which is from the friendship table, is rendered on the left side bar component. A prospective friends list is also stored as a slice of state to allow user to add other users.  Once a new friendship is established, the new friend will then be moved from prospective friend to the friends list in both the react components as well as the database.
 
-**Objective:** Functioning rails project with front-end Authentication
+### Adding Bills
 
-### Phase 2: AddFriends, API, and components (2 days)
+To add bills, the user will click on the Add a bill a button, which will render a modal for the user to input pertinent information for bill creation.  The user can add friend(s) who participated in the transaction, bill description, amount and date.  Once all information is submitted bu user, the application will send a request back the database.  The bill detail will be passed into two different tables.  The transaction will be recorded at the bill table, which retains all the bill information, and also add a payer_id for the user who paid for the bill.  In addition, friend(s) who participated in the transaction will also be recorded in the owers table along with the amount they owe to the payer.  After both entries are created, the user controller will return outstanding balances by friends and bills by friend back to front to be render by React.  
 
-**Objective:** Ability to add friends and render list of friends
+### Tracking Bills
 
-### Phase 3: Bill (2 days)
+The dashboard component shows a snapshot of your net balances by friends.  If there is any changes in the balance, the component will render the new state and display the updated balances.  Users can also view all the outstanding transaction by friend through the friends list on the left side bar.  Once an individual friend is clicked, the route paths is redirected to the friends transaction page and the dashboard component will be swapped for transaction detail component.  
 
-**Objective:** Add bills, split between friends and render transaction on the homepage
+### Settling Bills
 
-### Phase 4: Bill's child components (1 day)
+To settle a bill, the user will need to click on the settle up button, which will activate the settle up modal.  The user can settle by friend or by bill.  If user chooses to settle by friend, the user controller will query all bills associated between the two users by their user id and update the owers table paid status from false to true for all bills related to the two users.  If user settles a specific bill, the user controller will query the owers table by the specific bill id and update paid status to true for that specific entry in the owers table.  
 
-**Objective:** Add Date, Comments components
+## Future Directions for the Project
 
-### Phase 5: SettleBill (1 day, W2 Th 6pm)
+Below are the upcoming features that are expected to be rolled out in the next update.
 
-**Objective:** Add Component and update server
+### Resetting password
 
-### Phase 6: - Click into Friends, fine tune CSS and animations (1 day, W2 F 6pm)
+Reset link will be sent to user's email address if they need to reset their password.  Action Mailer will be implemented in the back to enable email correspondence with the user.
 
-**Objective:** Ability to see bill details by friends
+### Removing erroneous bills
 
-### Bonus Features (TBD)
-- [ ] Add Friends directly on the homepage
-- [ ] Send reminder emails to owers
-- [ ] Show total outstanding balances by friend on the right sidebar
-- [ ] Delete bills and allow different settlement methods
+Allow user to remove bills from the transaction component.  Will need to add button where its intuitive for user to access the button to edit bill details.  
