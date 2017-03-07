@@ -5,6 +5,12 @@ class HomeHeader extends React.Component {
   constructor(props) {
     super(props);
     this.signout = this.signout.bind(this);
+
+    this.state = {
+      dropDown: false,
+    };
+
+    this.dropDownMenu = this.dropDownMenu.bind(this);
   }
 
   signout() {
@@ -13,7 +19,13 @@ class HomeHeader extends React.Component {
     });
   }
 
+  dropDownMenu() {
+    this.setState({ dropDown: !this.state.dropDown});
+  }
+
   render() {
+    let dropDownKlass = this.state.dropDown === false ? "dropdown-content-home" : "dropdown-content-home show";
+
     return (
       <div className="home-header">
 
@@ -21,13 +33,18 @@ class HomeHeader extends React.Component {
           <img src={window.images.splitzeesLogo}/>
         </div>
         <div className="home-menu">
-          <div className="waldo">
-            <img src={window.images.waldo}/>
+          <div className="logout-dropdown">
+
+          <a className="user-menu" onClick={this.dropDownMenu}>
+            <img className="waldo" src={window.images.waldo}/>
+            <div className="username-menu">{this.props.currentUser.username}</div>
+            <div className="arrow-down"></div>
+          </a>
+
+          <div id="myDropdown" className={dropDownKlass}>
+            <a className="log-out-menu"onClick={this.signout}>Log Out</a>
           </div>
-          <button className="usermenu" onClick={this.signout}>
-            {this.props.currentUser.username}
-          </button>
-          <div className="arrow-down"></div>
+          </div>
         </div>
       </div>
     );

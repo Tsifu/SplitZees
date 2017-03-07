@@ -13,10 +13,10 @@ class Transactions extends React.Component {
     if (this.props.bills) {
 
 
-    showBills = this.props.bills.map(bill => {
+    showBills = this.props.bills.map((bill,idx) => {
       if (bill.ower_userid) {
         return (
-          <li key={bill.id}>
+          <li key={idx}>
             <div className="bill-detail">
             <div className="bill-date-des">
               <div className="bill-date">
@@ -37,7 +37,7 @@ class Transactions extends React.Component {
         );
       } else {
         return (
-          <li key={bill.id}>
+          <li key={idx}>
             <div className="bill-detail">
             <div className="bill-date-des">
               <div className="bill-date">

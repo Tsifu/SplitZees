@@ -76,12 +76,6 @@ h1 {
 
 }
 
-.landing-img-1:hover + .landing-img-2{
-	// right: 30px;
-	// opacity: .8;
-}
-
-
 .landing-img-2 {
 	width: 300px;
 	transition: width 1s, opacity 1s;
@@ -103,13 +97,13 @@ h1 {
 }
 
 .landing-images {
-	width: 40%;
+	width: 100%;
+	max-width: 610px;
 	margin: 0 auto;
 	position: relative;
 	padding: 30px;
 }
 
-.landing-img-2:hover + .landing-img-1 {
-	// right: 30px;
-	// opacity: .8;
+.landing-img-1, .landing-img-2 {
+	width: 40%;
 }

@@ -16,10 +16,10 @@ img {
   display: flex;
   justify-content: flex-end;
   padding-right: 10px;
+  font-size: 15px;
 }
 
 .waldo {
-  margin-left: 5px;
   width: 30px;
   height: 30px;
   background-color: #ccc;
@@ -64,4 +64,64 @@ img {
 .rsidebar {
   float: left;
   width: 18%;
+}
+
+.logout-dropdown {
+  position: relative;
+  display: inline-block;;
+}
+
+.dropdown-content-home {
+  display: none;
+  position: absolute;
+  background-color: #eee;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  z-index: 1;
+  top: 32px;
+  height: 38px;
+  margin: 0 auto;
+  width: 95px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+
+.dropdown-content-home a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content-home a:hover {
+  background-color: #5bc5a7;
+  color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.show {display:block;}
+
+.user-menu {
+  display: flex;
+}
+
+.user-menu:hover {
+  cursor: pointer;
+}
+
+.username-menu {
+  color: #fff;
+  position: relative;
+  top: 50%;
+  transform: translateY(30%);
+  font-size: 15px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.log-out-menu {
+  cursor: pointer;
+  color: #fff;
 }
