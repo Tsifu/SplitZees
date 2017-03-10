@@ -2,9 +2,9 @@
 
 [SplitZees][heroku]
 
-[heroku]: https://splitzees.herokuapp.com/#/
+[heroku]: http://www.splitzees.club/
 
-SplitZees is a full-stack web application inspired by Splitwise.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
+SplitZees is a full-stack web application inspired by Splitwise.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, React.js and Redux on the frontend.
 
 ## Features & Implementation
 

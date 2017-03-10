@@ -20,6 +20,7 @@ const customStyles = {
     border                : '1px solid #ccc',
     borderRadius          : '4px',
     padding               : '0px',
+    overflow              : 'scroll'
 
   }
 };
@@ -142,6 +143,7 @@ class SettleBill extends React.Component {
         return (
           <li key={idx}>
             <div className="bill-detail-settle">
+              <label className="bill-detail-label">
               <input type="checkbox" onClick={ () => this.addBillToSettle(bill.bill_id, whoOwes)}/>
               <div className="bill-d-s">
                 {bill.bill_date}
@@ -154,6 +156,7 @@ class SettleBill extends React.Component {
               <div className="bill-d-s">
                 {amountToBeDisplayed}
               </div>
+              </label>
             </div>
           </li>
         );
@@ -172,16 +175,14 @@ class SettleBill extends React.Component {
           onRequestClose={this.props.closeSBModal}
           >
           <div className="settle-bill-main">
-
             <div className="s-b-header">Settle up</div>
             <div className="settle-bill-by-friend">
               <div className="add-name-select">
                 <form className="radio-select">
-                  <input type="radio" className="settlement-type" name="settlement-type" value="settle by friend" onClick={this.showFriendForm}/>Settle by friend
-                  <input type="radio" className="settlement-type" name="settlement-type" value="settle by bill" onClick={this.showBillForm}/>Settle by bill
+                  <label className="settleByFriendLabel"><input type="radio" className="settlement-type" name="settlement-type" value="settle by friend" onClick={this.showFriendForm}/>Settle by friend</label>
+                  <label className="settleByBillLabel"><input type="radio" className="settlement-type" name="settlement-type" value="settle by bill" onClick={this.showBillForm}/>Settle by bill</label>
                 </form>
               </div>
-
               <div className={dropdownSettleFriendForm}>
               <form className="settle-friend-form" onSubmit={this.friendHandleSubmit}>
                 <button className="settle-form-cancel" onClick={() => this.props.closeSBModal()}>Cancel</button>
@@ -193,7 +194,7 @@ class SettleBill extends React.Component {
                   </select>
 
                   <input
-                    className="input-bill"
+                    className="settle-input-bill"
                     type="date"
                     value={this.state.paidDate}
                     onChange={this.update('paidDate')}
@@ -212,7 +213,7 @@ class SettleBill extends React.Component {
                     {selectOption}
                   </select>
                   <input
-                    className="input-bill"
+                    className="settle-input-bill"
                     type="date"
                     value={this.state.paidDate}
                     onChange={this.update('paidDate')}
@@ -223,6 +224,7 @@ class SettleBill extends React.Component {
                   {showBills}
                 </ul>
               </div>
+
               </div>
             </div>
 

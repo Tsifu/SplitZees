@@ -1,6 +1,6 @@
 .settle-bill-main {
   width: 380px;
-  height: 500px;
+  height: 300px;
 }
 
 .dropdown-content.hide {
@@ -11,6 +11,7 @@
 
 .settle-bill {
   display: block;
+  overflow: hidden;
 }
 
 .settle-bill.hide {
@@ -42,10 +43,11 @@
   border-bottom: 1px solid #36977b;
   width: 380px;
   font-family: 'Lato', sans-serif;
+  margin-right: 0px;
 }
 
 .add-name-select {
-  width: 50%;
+  width: 58%;
   margin: 0 auto;
 }
 
@@ -54,6 +56,7 @@
   display: flex;
   justify-content: center;
   font-size: 13px;
+  width: 200px;
 }
 
 .settlement-type {
@@ -71,6 +74,7 @@
   padding: 7px;
   font-family: 'Lato', sans-serif;
   margin-top: 8px;
+  margin-left: 10px;
 }
 
 .settle-form-submit {
@@ -82,7 +86,7 @@
   width: 75px;
   padding: 5px;
   font-family: 'Lato', sans-serif;
-  margin-left: 5px;
+  margin-left: 12px;
   margin-bottom: 8px;
 }
 
@@ -101,6 +105,7 @@
   margin-bottom: 5px;
   font-size: 14px;
   width: 88%;
+  margin-left: 10px;
 }
 
 .bill-detail-settle {
@@ -112,15 +117,44 @@
 }
 
 .bill-d-s {
-  margin: 5px;
+  margin-left: 8px;
 }
 
 .show-bill-details-by-friend {
-  width: 65%;
+  height: 90px;
+  overflow: scroll;
 }
 
 .show-bills-zero {
-  margin-left: 40px;
+  margin-left: 95px;
   color: #5BC5A7;
   font-weight: bolder;
+}
+
+
+.settleByBillLabel {
+  margin-left: 5px;
+}
+
+.settle-input-bill {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  width: 164px;
+  margin-left: 10px
+}
+
+
+.show-bills-to-settle {
+  border-top: 1px solid #ccc;
+}
+
+.bill-detail-label {
+  display: inherit;
+}
+
+.checkboxes input {
+  vertical-align: middle;
 }

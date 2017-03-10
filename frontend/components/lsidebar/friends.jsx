@@ -110,14 +110,23 @@ class Friends extends React.Component {
       return <div></div>;
     }
 
-    let results = this.matches().map((result) => {
+    let results = this.matches().map((result,idx) => {
       return (
-        <li className="result-email" key={result.id} onClick={this.selectName}>
+        <li className="result-email" key={idx} onClick={this.selectName}>
           <i className="fa fa-user" aria-hidden="true"></i>
             {result.email}
         </li>
       );
     });
+
+    let currentFriends = this.props.friends.map((friend,idx) => (
+      <li className="friend" key={idx}>
+        <Link className="friend-link" to={`friends/${friend.id}`}>
+        <i className="fa fa-user" aria-hidden="true"></i>
+        {friend.username}
+        </Link>
+      </li>
+    ));
 
     return (
       <div className="left-sidebar">
@@ -136,16 +145,7 @@ class Friends extends React.Component {
         </div>
 
         <ul className="friends-list">
-          {
-            this.props.friends.map(friend => (
-              <li className="friend" key={friend.id}>
-                <Link className="friend-link" to={`friends/${friend.id}`}>
-                <i className="fa fa-user" aria-hidden="true"></i>
-                {friend.username}
-                </Link>
-              </li>
-            ))
-          }
+          {currentFriends}
         </ul>
 
         <Modal

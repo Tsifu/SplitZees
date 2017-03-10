@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: center;
   flex-flow: column;
+  margin-left: 15px;
 }
 
 h2 {
@@ -95,4 +96,9 @@ ul {
 
 .errorli {
   padding: 5px;
+}
+
+.back-to-sign-in {
+  margin-top: 15px;
+  font-size: 20px;
 }

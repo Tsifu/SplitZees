@@ -72,11 +72,13 @@ class User < ApplicationRecord
 
 		bills = self.bills.includes(:owers).where(owers: { paid: false })
 
+		bills = bills.sort_by { |e| e.bill_date }.reverse
+
 		bills.each do |bill|
 			bill.owers.each do |ower|
 				outstanding_receivables[ower.id] = {
 					bill_id: bill.id,
-					bill_date: bill.bill_date,
+					bill_date: bill.bill_date.strftime("%m/%d/%Y"),
 					bill_description: bill.description,
 					ower_id: ower.id,
 					owed_amount: -ower.amount,
@@ -93,10 +95,12 @@ class User < ApplicationRecord
 
 		payables = Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, false)
 
+		payables = payables.sort_by { |e| e.bill.bill_date }.reverse
+
 		payables.each do |payable|
 			outstanding_payables[payable.id] = {
 				bill_id: payable.bill_id,
-				bill_date: payable.bill.bill_date,
+				bill_date: payable.bill.bill_date.strftime("%m/%d/%Y"),
 				bill_description: payable.bill.description,
 				payer_id: payable.bill.payer_id,
 				owed_amount: payable.amount,
@@ -111,11 +115,13 @@ class User < ApplicationRecord
 
 		bills = self.bills.includes(:owers).where(paid: true)
 
+		bills = bills.sort_by { |e| e.bill_date }.reverse
+
 		bills.each do |bill|
 			bill.owers.each do |ower|
 				settled_receivables[ower.id] = {
 					bill_id: bill.id,
-					bill_date: bill.bill_date,
+					bill_date: bill.bill_date.strftime("%m/%d/%Y"),
 					bill_description: bill.description,
 					ower_id: ower.id,
 					owed_amount: -ower.amount,
@@ -133,10 +139,12 @@ class User < ApplicationRecord
 
 		payables = Ower.includes(:bill).where("user_id = ? AND paid = ?", self.id, true)
 
+		payables = payables.sort_by { |e| e.bill.bill_date }.reverse
+
 		payables.each do |payable|
 			settled_payables[payable.id] = {
 				bill_id: payable.bill_id,
-				bill_date: payable.bill.bill_date,
+				bill_date: payable.bill.bill_date.strftime("%m/%d/%Y"),
 				bill_description: payable.bill.description,
 				payer_id: payable.bill.payer_id,
 				owed_amount: payable.amount,
@@ -189,6 +197,10 @@ class User < ApplicationRecord
 
 		payables.each do |key, value|
 			bills_by_friend[value[:payer_id]] << value
+		end
+
+		bills_by_friend.each do |key,value|
+			bills_by_friend[key] = value.sort_by { |e| e[:bill_date] }.reverse
 		end
 
 		bills_by_friend

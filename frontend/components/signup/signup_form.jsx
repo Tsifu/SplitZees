@@ -77,6 +77,10 @@ class SignUpForm extends React.Component {
               </label>
               <input className="signin-submit" type="submit" value="Sign me up!"/>
             </form>
+
+            <div className="back-to-sign-in">
+              or <a href="#">Sign In</a>
+            </div>
           </div>
           </div>
       </div>
