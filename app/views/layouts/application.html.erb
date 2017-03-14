@@ -3,7 +3,7 @@
   <head>
     <title>SplitZees</title>
     <%= csrf_meta_tags %>
-
+    <%= include_gon(init: true, namespace: :myApp) %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'favicon.ico' %>
