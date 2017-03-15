@@ -12,7 +12,7 @@ const customStyles = {
     backgroundColor   : 'rgba(255, 255, 255, 0.75)'
   },
   content : {
-    top                   : '50%',
+    top                   : '60%',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
@@ -37,7 +37,8 @@ class Dashboard extends React.Component {
       date: "",
       splitAmount: 0,
       inputVal: "",
-      friends: {}
+      friends: {},
+      friendsError: null
     };
 
     this.openModal = this.openModal.bind(this);
@@ -53,8 +54,9 @@ class Dashboard extends React.Component {
   }
 
   closeModal() {
-      this.setState({modalIsOpen: false });
-        this.clearState();
+    this.setState({modalIsOpen: false });
+    this.clearState();
+    this.props.clearErrors();
   }
 
   openSBModal() {
@@ -63,10 +65,11 @@ class Dashboard extends React.Component {
 
   closeSBModal() {
     this.setState({ sbModalIsOpen: false });
+
   }
 
   clearState() {
-    this.setState({description:"", owers: [], amount:"", date:"", splitAmount: 0});
+    this.setState({description:"", owers: [], amount:"", date:"", splitAmount: 0, friendsError: null});
   }
 
   componentDidMount() {
@@ -114,6 +117,10 @@ class Dashboard extends React.Component {
       owers : owersAndAmount
     };
 
+    if (this.state.owers.length === 0) {
+      this.setState({ friendsError: "Please add friend(s) to bill" });
+    }
+
     this.props.createBill(bill).then(() => {
       this.closeModal();
       this.clearState();
@@ -130,6 +137,21 @@ class Dashboard extends React.Component {
       selectOption = this.props.friends.map(friend => {
         return (
           <option key={friend.id} value={friend.value}>{friend.username}</option>
+        );
+      });
+    }
+
+    let friendsError;
+
+    if (this.state.friendsError) {
+      friendsError = <div className="friendsError">{this.state.friendsError}</div>;
+    }
+
+    let cbErrors;
+    if (this.props.cbErrors) {
+      cbErrors = this.props.cbErrors.map((error, idx) => {
+        return (
+          <li className="cbError" key={idx}>{error}</li>
         );
       });
     }
@@ -181,6 +203,12 @@ class Dashboard extends React.Component {
               <div className="add-friends-area">
                   {owers}
               </div>
+          </div>
+          <div>
+            {friendsError}
+            <ul className="cbErrors">
+              {cbErrors}
+            </ul>
           </div>
           <div className="add-name-select">
             <select className="add-friend" onChange={this.addFriend} defaultValue="">

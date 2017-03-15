@@ -48,7 +48,6 @@ const BillsReducer = (oldState = _defaultState, action) => {
 
     case CLEAR_ERRORS:
       return Object.assign({}, oldState, { errors: null });
-
     default:
       return oldState;
   }

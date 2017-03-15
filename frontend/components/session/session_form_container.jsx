@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   errors: Object.keys(state.session.errors).map(id => state.session.errors[id])
 });
 
+
 const mapDispatchToProps = dispatch => ({
   login: (user) => dispatch(login(user)),
   logout: () => dispatch(logout(user)),

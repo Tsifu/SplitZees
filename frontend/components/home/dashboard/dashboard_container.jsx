@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
-import { createBill, fetchBills } from '../../../actions/bills_actions';
+import { createBill, fetchBills, clearErrors } from '../../../actions/bills_actions';
 import { fetchFriendships} from '../../../actions/friendships_actions';
 
 const mapStateToProps = (state) => {
@@ -21,13 +21,14 @@ const mapStateToProps = (state) => {
     youAreOwed = state.bills.outstandingBalances.youAreOwed;
     youOwe = state.bills.outstandingBalances.youOwe;
   }
-  
+
   return ({
     netBalance: netBalance,
     youAreOwed: youAreOwed,
     youOwe: youOwe,
     currentUser: state.session.currentUser,
-    friends: loadedFriends
+    friends: loadedFriends,
+    cbErrors: state.bills.errors
   });
 };
 
@@ -37,7 +38,8 @@ const mapDispatchToProps = dispatch => {
     createBill: (bill) => dispatch(createBill(bill)),
     fetchBills: () => {
       return dispatch(fetchBills());
-    }
+    },
+    clearErrors: () => dispatch(clearErrors())
   });
 };
 
