@@ -47,7 +47,7 @@ class Header extends React.Component {
                 <SessionFormContainer />
               </div>
             </div>
-            <div className="or">ordasdf</div>
+            <div className="or">or</div>
             <button className="btn-signup" onClick={editLink("/signup")}>Sign Up</button>
           </div>
         </div>
