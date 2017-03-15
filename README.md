@@ -6,11 +6,10 @@
 
 [heroku]: https://www.splitzees.club/
 
-SplitZees is a full-stack web application inspired by Splitwise.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, React.js and Redux on the frontend.
 
 ## Features & Implementation
 
-SplitZees is a bill tracking application that allows users to monitor shared expenses between friends.  SplitZees currently offer four lives features to assist users in tracking expenses.
+SplitZees is a full-stack single page application inspired by Splitwise.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, React.js and Redux on the frontend.  SplitZees is a bill tracking application that allows users to monitor shared expenses between friends.  SplitZees currently offer four lives features to assist users in tracking expenses.
 
   * **Adding Friends**: user can add other users as their friends
   * **Adding Bills**: user can choose which friend(s) to allocate expenses to
