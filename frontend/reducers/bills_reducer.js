@@ -1,6 +1,8 @@
 import {
   RECEIVE_BILL,
-  RECEIVE_ALL_BILLS
+  RECEIVE_ALL_BILLS,
+  RECEIVE_CB_ERRORS,
+  CLEAR_ERRORS
 } from '../actions/bills_actions';
 
 import merge from 'lodash/merge';
@@ -12,7 +14,8 @@ const _defaultState = {
   outstandingPayables: null,
   outstandingReceivables: null,
   settledPayables: null,
-  settledReceivables: null
+  settledReceivables: null,
+  errors: null,
 };
 
 const BillsReducer = (oldState = _defaultState, action) => {
@@ -38,6 +41,13 @@ const BillsReducer = (oldState = _defaultState, action) => {
         settledPayables: action.settledPayables,
       };
       return merge( {}, currentState );
+
+    case RECEIVE_CB_ERRORS:
+      const newState = merge({}, oldState, { errors: action.errors });
+      return newState;
+
+    case CLEAR_ERRORS:
+      return Object.assign({}, oldState, { errors: null });
 
     default:
       return oldState;

@@ -114,9 +114,10 @@ class Dashboard extends React.Component {
       owers : owersAndAmount
     };
 
-    this.props.createBill(bill);
-    this.closeModal();
-    this.clearState();
+    this.props.createBill(bill).then(() => {
+      this.closeModal();
+      this.clearState();
+    });
   }
 
   render() {

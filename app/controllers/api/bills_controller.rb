@@ -3,6 +3,7 @@ class Api::BillsController < ApplicationController
     @bill = Bill.new(bill_params)
     @bill.payer_id = current_user.id
     @bill.paid = false
+
     if @bill.save
       @owers = params[:bill][:owers]
       Ower.record_bill(@bill.id, @owers)

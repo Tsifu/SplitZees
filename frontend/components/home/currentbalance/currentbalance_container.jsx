@@ -8,7 +8,6 @@ const mapStateToProps = (state) => {
   let friends = state.friendships.friends;
   let bills = state.bills.balanceByFriends;
   if (bills) {
-    debugger
     Object.keys(bills).forEach(id => {
       if (bills[id] > 0) {
         youAreOwedByFriends.push(
