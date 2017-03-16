@@ -129,13 +129,27 @@ class SettleBill extends React.Component {
   friendHandleSubmit(event) {
     event.preventDefault();
     let friend;
-    friend = {
-      friend_id: this.state.friendId,
-      paid_date: this.state.paidDate,
-    };
-    this.props.settleFriend(friend);
-    this.props.closeSBModal();
-    this.clearState();
+
+    if (this.state.friendId !== "" && this.state.paidDate !== "" ) {
+      friend = {
+        friend_id: this.state.friendId,
+        paid_date: this.state.paidDate,
+      };
+      this.props.settleFriend(friend);
+      this.props.closeSBModal();
+      this.clearState();
+    } else {
+      let errors = [];
+
+      if (this.state.friendId === null) {
+        errors.push("Please select friend.");
+      }
+
+      if (this.state.paidDate === "") {
+        errors.push("Please pick settlement date.");
+      }
+      this.setState({ errors: errors });
+    }
   }
 
   render() {
@@ -228,8 +242,10 @@ class SettleBill extends React.Component {
                     value={this.state.paidDate}
                     onChange={this.update('paidDate')}
                   />
-
               </form>
+              <div>
+                {errorMessages}
+              </div>
               </div>
 
               <div className={dropdownSettleBillForm}>
