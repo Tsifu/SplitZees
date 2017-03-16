@@ -1,6 +1,6 @@
 .settle-bill-main {
   width: 380px;
-  height: 300px;
+  height: 400px;
 }
 
 .dropdown-content.hide {
@@ -126,7 +126,7 @@
 }
 
 .show-bills-zero {
-  margin-left: 95px;
+  margin-left: 110px;
   color: #5BC5A7;
   font-weight: bolder;
 }
@@ -157,4 +157,9 @@
 
 .checkboxes input {
   vertical-align: middle;
+}
+
+.sBError {
+  margin-left: 110px;
+  margin-bottom: 5px;
 }

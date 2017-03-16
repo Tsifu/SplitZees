@@ -37,6 +37,7 @@ class SettleBill extends React.Component {
       showFriendForm: false,
       friendsBills: "",
       friendId: null,
+      errors: [],
     };
     this.showFriendForm = this.showFriendForm.bind(this);
     this.showBillForm = this.showBillForm.bind(this);
@@ -62,6 +63,7 @@ class SettleBill extends React.Component {
       showFriendForm: false,
       friendsBills: "",
       friendId: null,
+      errors: [],
     });
   }
 
@@ -95,14 +97,33 @@ class SettleBill extends React.Component {
   billHandleSubmit(event) {
     event.preventDefault();
     let bill;
-    bill = {
-      bill_id: this.state.billId,
-      paid_date: this.state.paidDate,
-      ower_userid: this.state.owerUserid
-    };
-    this.props.settleBill(bill);
-    this.props.closeSBModal();
-    this.clearState();
+
+    if (this.state.billId !== "" && this.state.paidDate !== "" && this.state.owerUserid !== "") {
+      bill = {
+        bill_id: this.state.billId,
+        paid_date: this.state.paidDate,
+        ower_userid: this.state.owerUserid
+      };
+      this.props.settleBill(bill);
+      this.props.closeSBModal();
+      this.clearState();
+    } else {
+      let errors = [];
+
+      if (this.state.friendId === null) {
+        errors.push("Please select friend.");
+      }
+
+      if (this.state.paidDate === "") {
+        errors.push("Please pick settlement date.");
+      }
+
+      if (this.state.billId === "") {
+        errors.push("Please select bill to settle.");
+      }
+
+      this.setState({ errors: errors });
+    }
   }
 
   friendHandleSubmit(event) {
@@ -166,6 +187,14 @@ class SettleBill extends React.Component {
     let dropdownSettleBillForm = this.state.showBillForm ? "settle-bill" : "settle-bill hide";
     let dropdownSettleFriendForm = this.state.showFriendForm ? "settle-friend" : "settle-friend hide";
 
+    let errorMessages;
+
+    if (this.state.errors.length > 0) {
+      errorMessages = this.state.errors.map((error, idx) => {
+        return <div className="sBError" key={idx}>{error}</div>;
+      });
+    }
+
     return (
       <div>
         <Modal
@@ -219,6 +248,9 @@ class SettleBill extends React.Component {
                     onChange={this.update('paidDate')}
                   />
               </form>
+              <div>
+                {errorMessages}
+              </div>
               <div className="show-bills-to-settle">
                 <ul className="show-bill-details-by-friend">
                   {showBills}
