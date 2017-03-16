@@ -19,7 +19,7 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -170%)',
+    transform             : 'translate(-50%, -80%)',
     border                : '1px solid #ccc',
     borderRadius          : '4px',
     padding               : '0px',
@@ -157,6 +157,7 @@ class Friends extends React.Component {
           >
 
           <div className="searchForFriends">
+            <div className="searchNoScroll">
             <div className="searchHeader">
               Search for friend
             </div>
@@ -173,14 +174,14 @@ class Friends extends React.Component {
                     />
                 </label>
               </div>
-
               <div>
                 <button className="search-cancel" onClick={this.closeModal}>Cancel</button>
                 <input className="search-save" type="submit" value="Save"/>
               </div>
             </form>
+          </div>
 
-
+            <div className="search-friends-list">
               <ul className="search-results">
                 <ReactCSSTransitionGroup
                   transitionName='auto'
@@ -189,6 +190,7 @@ class Friends extends React.Component {
                   {results}
                 </ReactCSSTransitionGroup>
               </ul>
+            </div>
           </div>
 
         </Modal>

@@ -13,7 +13,13 @@
 
 .searchForFriends {
   margin: 0 auto;
+  height: 300px;
 
+}
+
+.searchNoScroll {
+  display: block;
+  overflow: hidden;
 }
 
 .search-cancel {
@@ -67,4 +73,9 @@
 
 .search-results li:hover{
   background-color: #ccc;
+}
+
+.search-friends-list {
+  overflow: scroll;
+  height: 200px;
 }

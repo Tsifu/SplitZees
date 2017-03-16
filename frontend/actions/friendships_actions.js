@@ -5,11 +5,13 @@ export const RECEIVE_FRIENDSHIPS_ERRORS = "RECEIVE_FRIENDSHIPS_ERRORS";
 export const RECEIVE_FRIEND = "RECEIVE_FRIEND";
 export const RECEIVE_FRIEND_ERRORS = "RECEIVE_FRIEND_ERROR";
 
-export const receiveFriendships = ({friends, prospectiveFriends}) => ({
-  type: RECEIVE_FRIENDSHIPS,
-  friends,
-  prospectiveFriends
-});
+export const receiveFriendships = ({friends, prospectiveFriends}) => {
+  return ({
+    type: RECEIVE_FRIENDSHIPS,
+    friends,
+    prospectiveFriends
+  });
+}
 
 export const receiveFriendshipsErrors = (errors) => ({
   type: RECEIVE_FRIENDSHIPS_ERRORS,

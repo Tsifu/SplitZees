@@ -64,7 +64,8 @@ class User < ApplicationRecord
 	def prospective_friends
 		friends_id = User.find(self.id).friends.pluck(:id)
 		friends_id_and_self = friends_id.push(self.id)
-		User.where.not(id: friends_id_and_self).order(:email)
+		prop_friends = User.where.not(id: friends_id_and_self)
+		prop_friends.order(:email)
 	end
 
 	def outstanding_receivables

@@ -12,8 +12,11 @@ class Api::FriendshipsController < ApplicationController
 
   def show
      @user = User.find(params[:id])
-     @friends = @user.friends
-     @prospective_friends = @user.prospective_friends
+     friends = @user.friends.order(:username)
+     prospective_friends = @user.prospective_friends.order(:email)
+
+     @friends = friends.order(:username)
+     @prospective_friends = prospective_friends.order(:email)
      render "api/friendships/show"
   end
 
