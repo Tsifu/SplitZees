@@ -1,8 +1,11 @@
-export const createBill = (bill) => (
+export const createBill = (formData) => (
   $.ajax({
     method: "POST",
     url: `api/bills`,
-    data: {bill},
+    dataType: "json",
+    contentType: false,
+    processData: false,
+    data: formData,
   })
 );
 
