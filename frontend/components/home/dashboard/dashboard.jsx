@@ -125,11 +125,11 @@ class Dashboard extends React.Component {
       };
     });
 
-    const formData= new FormData();
+    let formData = new FormData();
     formData.append("bill[description]", this.state.description);
     formData.append("bill[amount]", this.state.amount);
     formData.append("bill[bill_date]", this.state.date);
-    formData.append("bill[owers]", owersAndAmount);
+    formData.append("bill[owers]", JSON.stringify(owersAndAmount));
     formData.append("bill[attachment]", this.state.attachedFile);
 
     // let bill = {

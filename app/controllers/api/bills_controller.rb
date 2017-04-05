@@ -5,7 +5,7 @@ class Api::BillsController < ApplicationController
     @bill.paid = false
 
     if @bill.save
-      @owers = params[:bill][:owers]
+      @owers = JSON.parse(params[:bill][:owers])
       Ower.record_bill(@bill.id, @owers)
       @user = current_user
       @outstanding_receivables = @user.outstanding_receivables

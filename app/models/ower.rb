@@ -34,7 +34,7 @@ class Ower < ApplicationRecord
 
   def self.record_bill(bill_id, owers)
     owers.each do |key, value|
-      Ower.create(amount: value[:amount].to_f, user_id: value[:user_id].to_i, bill_id: bill_id, paid: false)
+      Ower.create(amount: value["amount"], user_id: value["user_id"], bill_id: bill_id, paid: false)
     end
   end
 
