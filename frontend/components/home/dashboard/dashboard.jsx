@@ -202,7 +202,7 @@ class Dashboard extends React.Component {
 
           <div className="youOwe">
             <div className="balance-title balance-border">you owe</div>
-            <div className={youOweColor}>${Math.abs(this.props.youOwe.toFixed(2))}</div>
+            <div className={youOweColor}>${Math.abs(this.props.youOwe).toFixed(2)}</div>
           </div>
 
           <div className="youAreOwed">
