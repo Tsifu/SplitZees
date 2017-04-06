@@ -92,3 +92,16 @@ ul.tags li:last-child:after {
 .add-friends-area {
   margin-left: 5px;
 }
+
+.input-attachment {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  width: 169px;
+}
+
+input[type='file'] {
+  border: none;
+}

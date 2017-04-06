@@ -39,8 +39,8 @@ class Dashboard extends React.Component {
       inputVal: "",
       friends: {},
       friendsError: null,
-      attachedFile: null,
-      attachedUrl: null,
+      attachedFile: "",
+      attachedUrl: "",
     };
 
     this.openModal = this.openModal.bind(this);
@@ -272,6 +272,7 @@ class Dashboard extends React.Component {
                   className="input-attachment"
                   type="file"
                   onChange={this.attachFile}
+                  placeholder="Upload bill(pdf)"
                 />
               </div>
 
