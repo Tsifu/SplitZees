@@ -81,6 +81,7 @@ class User < ApplicationRecord
 					bill_id: bill.id,
 					bill_date: bill.bill_date.strftime("%m/%d/%Y"),
 					bill_description: bill.description,
+					bill_attachment: bill.attachment.url,
 					ower_id: ower.id,
 					owed_amount: -ower.amount,
 					ower_userid: ower.user_id
@@ -103,6 +104,7 @@ class User < ApplicationRecord
 				bill_id: payable.bill_id,
 				bill_date: payable.bill.bill_date.strftime("%m/%d/%Y"),
 				bill_description: payable.bill.description,
+				bill_attachment: payable.bill.attachment.url,
 				payer_id: payable.bill.payer_id,
 				owed_amount: payable.amount,
 			}

@@ -14,28 +14,36 @@ class Transactions extends React.Component {
 
 
     showBills = this.props.bills.map((bill,idx) => {
+      let bill_attachment = bill.bill_attachment ? <a href={bill.bill_attachment} target="_blank">link to bill</a> : "";
+
       if (bill.ower_userid) {
         return (
           <li key={idx}>
             <div className="bill-detail">
-            <div className="bill-date-des">
-              <div className="bill-date">
-                {bill.bill_date.toString("MMMM DD yyy")}
+              <div className="bill-date-des">
+                <div className="bill-date">
+                  {bill.bill_date.toString("MMMM DD yyy")}
+                </div>
+
+                <div className="bill-des">
+                  {bill.bill_description}
+                </div>
+
+                <div>
+                  {bill_attachment}
+                </div>
               </div>
 
-              <div className="bill-des">
-                {bill.bill_description}
+              <div>
+                  <div className="borrow-title">you lent {this.props.name}</div>
+                  <div className="positive-amount-detail">${bill.owed_amount.toFixed(2)}</div>
               </div>
-            </div>
-
-            <div>
-                <div className="borrow-title">you lent {this.props.name}</div>
-                <div className="positive-amount-detail">${bill.owed_amount.toFixed(2)}</div>
-            </div>
             </div>
           </li>
         );
       } else {
+        let bill_attachment = bill.bill_attachment ? <a href={bill.bill_attachment} target="_blank">link to bill</a> : "";
+
         return (
           <li key={idx}>
             <div className="bill-detail">
@@ -46,6 +54,10 @@ class Transactions extends React.Component {
 
               <div className="bill-des">
                 {bill.bill_description}
+              </div>
+
+              <div>
+                {bill_attachment}
               </div>
             </div>
 

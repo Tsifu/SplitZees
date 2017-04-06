@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
             userId : id
           }
         );
-      } else {
+      } else if (bills[id] < 0) {
         youOweByFriends.push(
           {
             [friends[id].username] : bills[id],

@@ -38,7 +38,9 @@ class Dashboard extends React.Component {
       splitAmount: 0,
       inputVal: "",
       friends: {},
-      friendsError: null
+      friendsError: null,
+      attachedFile: "",
+      attachedUrl: "",
     };
 
     this.openModal = this.openModal.bind(this);
@@ -47,6 +49,7 @@ class Dashboard extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.openSBModal = this.openSBModal.bind(this);
     this.closeSBModal = this.closeSBModal.bind(this);
+    this.attachFile = this.attachFile.bind(this);
   }
 
   openModal() {
@@ -93,6 +96,18 @@ class Dashboard extends React.Component {
     this.setState({ owers: owers });
   }
 
+  attachFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      this.setState({ attachedFile: file, attachedUrl: fileReader.result });
+    }.bind(this);
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     let friends = {};
@@ -110,18 +125,25 @@ class Dashboard extends React.Component {
       };
     });
 
-    let bill = {
-      description : this.state.description,
-      amount : this.state.amount,
-      bill_date : this.state.date,
-      owers : owersAndAmount
-    };
+    let formData = new FormData();
+    formData.append("bill[description]", this.state.description);
+    formData.append("bill[amount]", this.state.amount);
+    formData.append("bill[bill_date]", this.state.date);
+    formData.append("bill[owers]", JSON.stringify(owersAndAmount));
+    formData.append("bill[attachment]", this.state.attachedFile);
+
+    // let bill = {
+    //   description : this.state.description,
+    //   amount : this.state.amount,
+    //   bill_date : this.state.date,
+    //   owers : owersAndAmount
+    // };
 
     if (this.state.owers.length === 0) {
       this.setState({ friendsError: "Please add friend(s) to bill" });
     }
 
-    this.props.createBill(bill).then(() => {
+    this.props.createBill(formData).then(() => {
       this.closeModal();
       this.clearState();
     });
@@ -236,12 +258,21 @@ class Dashboard extends React.Component {
                   placeholder="Enter Amount"
                   onChange={this.update('amount')}
                 />
+
               <br/>
                 <input
                   className="input-bill"
                   type="date"
                   value={this.state.date}
                   onChange={this.update('date')}
+                />
+
+              <br/>
+                <input
+                  className="input-attachment"
+                  type="file"
+                  onChange={this.attachFile}
+                  placeholder="Upload bill(pdf)"
                 />
               </div>
 
