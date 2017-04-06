@@ -1,9 +1,0 @@
-development:
-  s3_bucket: "splitzees-dev"
-
-production:
-  s3_bucket: "splitzees-pro"
-
-s3_region:  "us-east-1"
-s3_access_key_id: "AKIAJ4EILEYCL7HLKH2Q"
-s3_secret_access_key: "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"
