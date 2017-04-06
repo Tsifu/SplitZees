@@ -14,7 +14,7 @@ class Transactions extends React.Component {
 
 
     showBills = this.props.bills.map((bill,idx) => {
-      let bill_attachment = bill.bill_attachment ? <a href={bill.bill_attachment} target="_blank">link to bill</a> : "";
+      let bill_attachment = bill.bill_attachment ? <a className="linkToBill" href={bill.bill_attachment} target="_blank"> (link to bill)</a> : "";
 
       if (bill.ower_userid) {
         return (
@@ -29,7 +29,7 @@ class Transactions extends React.Component {
                   {bill.bill_description}
                 </div>
 
-                <div>
+                <div className="linkDiv">
                   {bill_attachment}
                 </div>
               </div>
