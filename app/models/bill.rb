@@ -16,7 +16,7 @@ class Bill < ApplicationRecord
   validates :amount, :description, :bill_date, :payer_id, presence: true
 
   has_attached_file :attachment, default_url: ""
-  validates_attachment_content_type :attachment, content_type: ['image/jpeg', 'image/png', 'image/gif', 'application/pdf']
+  validates_attachment :attachment, content_type: { content_type: "application/pdf"}
 
   def set_status
     self.paid = false
